@@ -1,0 +1,263 @@
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+
+\documentclass[
+  a4paper,
+  12pt,
+]{report}
+
+% Set up margins
+\usepackage[a4paper, includehead, includefoot, margin=0.5in]{geometry}
+
+% Configure fonts
+\usepackage{unicode-math}
+\usepackage{xeCJK}
+\usepackage[default]{sourceserifpro}
+\usepackage[ttdefault]{sourcecodepro}
+\usepackage{sourcesanspro}
+\setCJKmainfont{Noto Serif CJK JP}
+
+% For adding the logo to the title page
+\usepackage{graphicx}
+
+% Used by Pandoc tables
+\usepackage{longtable,booktabs,array,multirow}
+\usepackage{calc}
+
+% Configure colors
+\usepackage{xcolor}
+\definecolor{TitleColor}{HTML}{723988}
+\definecolor{HeadingColor}{HTML}{723988}
+\definecolor{HyperlinkColor}{HTML}{AF1685}
+\definecolor{LayerBackgroundColor}{HTML}{333333}
+
+% Entrust colors
+\definecolor{Plum}{HTML}{723988}
+\definecolor{Fuchsia}{HTML}{AF1685}
+\definecolor{SlateGray}{HTML}{989AAB}
+\definecolor{GrayBlue}{HTML}{D9E1E2}
+\definecolor{LightGray}{HTML}{D9D9D6}
+\definecolor{DarkGray}{HTML}{3F454F}
+\definecolor{DarkTeal}{HTML}{005670}
+\definecolor{MidnightBlue}{HTML}{071D49}
+\definecolor{Abergine}{HTML}{3F2A56}
+
+\definecolor{LightGrey}{HTML}{f8f9fa}
+\definecolor{Grey}{HTML}{dee2e6}
+\definecolor{Yellow}{HTML}{ffba08}
+\definecolor{Yellow}{HTML}{ffba08}
+\definecolor{Organge}{HTML}{f48c06}
+\definecolor{Red}{HTML}{d00000}
+\definecolor{Green}{HTML}{058c42}
+
+% Redefine \texttt to include highlighting with a border
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{%
+  \fboxsep=1.5pt%
+  \fboxrule=1pt%
+  \fcolorbox{Grey}{LightGrey}{%
+    \color{Plum}\oldtexttt{#1}%
+  }%
+}
+
+% Configure links and PDF meta-data
+\usepackage[xetex, bookmarks, colorlinks, breaklinks]{hyperref}
+\hypersetup{
+  pdftitle={{$title$} - {$subtitle$} v{$version$}},
+  pdfsubject={$subtitle$},
+  pdfauthor={$author-meta$},
+  colorlinks=true,
+  urlcolor=HyperlinkColor,
+  linkcolor=HyperlinkColor
+}
+\urlstyle{same}  % Style links the same as the surrounding text.
+
+% Cleanup spaces after periods
+\frenchspacing{}
+
+% Add the subtitle to \maketitle
+\usepackage{etoolbox}
+
+% Configure the table of contents
+\usepackage{tocloft}
+\cftsetindents{section}{1em}{1em}
+\cftsetindents{subsection}{2em}{1em}
+\cftsetindents{subsubsection}{3em}{1em}
+\cftsetindents{paragraph}{4em}{1em}
+
+% Left Align Tables
+\usepackage[margins=raggedright]{floatrow}
+
+% Make tables smaller than the rest of the document
+\let\oldlongtable\longtable
+\let\oldendlongtable\endlongtable
+\renewenvironment{longtable}{\footnotesize\oldlongtable}{\oldendlongtable}
+
+% Disable per-paragraph indenting
+\usepackage{parskip}[indent=0pt]
+
+% Configure section styling
+\usepackage[compact]{titlesec}
+\titleformat{\section}[hang]{\clearpage\sourcesanspro\Large\bfseries\color{TitleColor}}{}{0.5pt}{}
+\titleformat{\subsection}[hang]{\sourcesanspro\Large\bfseries\color{HeadingColor}}{}{0.5pt}{}
+\titleformat{\subsubsection}[hang]{\sourcesanspro\large\bfseries\color{HeadingColor}}{}{0.5pt}{}
+\titleformat{\paragraph}[hang]{\sourcesanspro\normalsize\bfseries\color{HeadingColor}}{}{0.5pt}{}
+\titleformat{\subparagraph}[hang]{\sourcesanspro\normalsize\itshape\color{HeadingColor}}{}{0.5pt}{}
+\titlespacing*{\section}{0em}{1ex}{\parskip}
+\titlespacing*{\subsection}{0em}{1ex}{\parskip}
+\titlespacing*{\subsubsection}{0em}{1ex}{\parskip}
+\titlespacing*{\paragraph}{0em}{\baselineskip}{-\baselineskip}
+\titlespacing*{\subparagraph}{0em}{\baselineskip}{-\baselineskip}
+
+% Remove section numbering, since we number inline.
+\setcounter{secnumdepth}{-\maxdimen}
+
+% Fixup lists for the EV Guidelines, since LaTeX naturally only supports
+% six depths
+\usepackage[shortlabels]{enumitem}
+\setlistdepth{6}
+\setlist[itemize,1]{label=$$\bullet$$}
+\setlist[itemize,2]{label=$$\bullet$$}
+\setlist[itemize,3]{label=$$\bullet$$}
+\setlist[itemize,4]{label=$$\bullet$$}
+\setlist[itemize,5]{label=$$\bullet$$}
+\setlist[itemize,6]{label=$$\bullet$$}
+\renewlist{itemize}{itemize}{6}
+
+\setlist[enumerate,1]{label=$$\arabic*.$$}
+\setlist[enumerate,1]{label=$$\arabic*.$$}
+\setlist[enumerate,2]{label=$$\alph*.$$}
+\setlist[enumerate,3]{label=$$\roman*.$$}
+\setlist[enumerate,4]{label=$$\arabic*.$$}
+\setlist[enumerate,5]{label=$$\alpha*$$}
+\setlist[enumerate,6]{label=$$\roman*.$$}
+\renewlist{enumerate}{enumerate}{6}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+	\let\oldparagraph\paragraph
+	\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+	\let\oldsubparagraph\subparagraph
+	\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% Disable justification/hyphenation
+\raggedright
+
+% Configure page footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\small\color{HeadingColor}{$title$} - {$subtitle$} v{$version$} | page \thepage{}}
+\fancypagestyle{plain}
+
+% Pandoc likes to use "tightlist" to reduce vertical whitespace; carried
+% over from the base template.
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt} 
+}
+
+% Add a watermark for drafts
+$if(draft)$
+\usepackage{draftwatermark}
+$endif$
+
+% Style layers as indicated with a fenced div
+% 800-899 = Reserved for Auditors and Assessors
+% 900-999 = Resevred for CAs
+\usepackage{mdframed}
+\newenvironment{layer-800}%
+  {\begin{mdframed}[
+    linecolor=Yellow,
+		backgroundcolor=LightGrey,
+		skipabove=5mm,
+		skipbelow=5mm,
+		innertopmargin=5mm,
+		innerbottommargin=5mm,
+		innerleftmargin=5mm,
+		innerrightmargin=5mm,
+		leftmargin=5mm,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2mm
+  ]}%
+  {\end{mdframed}}
+\newenvironment{layer-900}%
+  {\begin{mdframed}[
+    linecolor=Green,
+		backgroundcolor=LightGrey,
+		skipabove=5mm,
+		skipbelow=5mm,
+		innertopmargin=5mm,
+		innerbottommargin=5mm,
+		innerleftmargin=5mm,
+		innerrightmargin=5mm,
+		leftmargin=5mm,
+		rightline=false,
+		topline=false,
+		bottomline=false,
+		linewidth=2mm
+  ]}%
+  {\end{mdframed}}
+
+% Document metadata
+\title{$title$}
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+
+% Layout the actual document
+\begin{document}
+
+% Coverpage
+\begin{titlepage}
+  \begin{center}
+    {\huge\bfseries {\color{TitleColor}$title$}}
+
+    $if(subtitle)$
+    \vspace{1cm}
+    {\Large\bfseries {\color{TitleColor}$subtitle$}}\\[15pt]
+    $endif$
+
+    \vspace{3cm}
+
+    \includegraphics[width=0.5\textwidth]{templates/entrust.pdf}\\[5pt]
+
+    \vspace{5cm}
+    $if(version)$
+    {\Large\bfseries {\color{DarkGray}Version: $version$}}\\[12pt]
+    $endif$
+    {\Large\bfseries {\color{DarkGray}$date$}}\\[10pt]
+
+    \vfill
+
+    {\small $copyright$}
+  \end{center}
+\end{titlepage}
+
+% Table of contents
+{
+  % Don't color links in the ToC
+  \hypersetup{linkcolor=}
+
+  % Show paragraphs in the ToC
+  \setcounter{tocdepth}{4}
+
+  % Make the ToC more compact
+  \renewcommand\cftdotsep{0.5}
+  \renewcommand\cftsetrmarg{0}
+
+  % Make the title pretty
+  \renewcommand*\contentsname{\sffamily\color{HeadingColor}{Table of Contents}}
+
+  \newpage
+  \tableofcontents
+  \newpage
+}
+
+$body$
+
+\end{document}

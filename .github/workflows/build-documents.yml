@@ -1,0 +1,55 @@
+name: Build Documents
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build_docs:
+    strategy:
+      matrix:
+        document:
+          - 'entrust'
+    name: Build ${{ matrix.document }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Create tar.gz from templates directory contents
+        run: |
+          cd templates
+          tar -czvf ../templates.tar.gz *
+      - name: Create tar.gz from filters directory contents
+        run: |
+          cd filters
+          tar -czvf ../filters.tar.gz *
+      - name: Checkout old version for redline
+        if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.event.push.before }}
+          path: old/
+      - name: Link RFC references
+        run: |
+          python tools/rfc-links.py ${{ matrix.document }}.md
+          python tools/rfc-links.py old/${{ matrix.document }}.md
+      - name: Link CA/Browser Forum references
+        run: |
+          python tools/cabforum-links.py ${{ matrix.document }}.md
+          python tools/cabforum-links.py old/${{ matrix.document }}.md
+      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-2a646ca4
+        id: build_doc
+        with:
+          markdown_file: ${{ matrix.document }}.md
+          diff_file: old/${{ matrix.document }}.md
+          template: entrust-cps
+          templates_file: templates.tar.gz
+          filters_file: filters.tar.gz
+          pdf: true
+          docx: true
+          lint: true
+          draft: ${{ !(github.event_name == 'push' && github.repository == 'cabforum/servercert' && github.ref == 'refs/heads/main') }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.document }}-${{ steps.build_doc.outputs.file_version }}-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.event_name }}
+          path: |
+            ${{ steps.build_doc.outputs.pdf_file }}
+            ${{ steps.build_doc.outputs.docx_file }}
+            ${{ steps.build_doc.outputs.pdf_redline_file }}
+          if-no-files-found: 'error'
