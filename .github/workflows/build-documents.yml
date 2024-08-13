@@ -40,7 +40,7 @@ jobs:
         run: |
           python tools/cabforum-links.py ${{ matrix.document }}.md
           python tools/cabforum-links.py old/${{ matrix.document }}.md
-      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-d2199a34
+      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-e5ddc9e4
         id: build_doc
         with:
           markdown_file: ${{ matrix.document }}.md
