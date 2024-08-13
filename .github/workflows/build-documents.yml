@@ -1,5 +1,10 @@
 name: Build Documents
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+  
 jobs:
   build_docs:
     strategy:
@@ -11,6 +16,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Create tar.gz from templates directory contents
         run: |
           cd templates
@@ -33,7 +40,7 @@ jobs:
         run: |
           python tools/cabforum-links.py ${{ matrix.document }}.md
           python tools/cabforum-links.py old/${{ matrix.document }}.md
-      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-2a646ca4
+      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-e5ddc9e4
         id: build_doc
         with:
           markdown_file: ${{ matrix.document }}.md
