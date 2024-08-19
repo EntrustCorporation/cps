@@ -682,6 +682,8 @@ doc_types = {
 }
 
 def check_markdown_headers(filename, sections):
+    found_sections = []
+
     with open(filename, 'r', encoding='utf-8') as file:
         for line in file:
             if line.startswith('#'):
@@ -691,21 +693,27 @@ def check_markdown_headers(filename, sections):
                     section_number, title = parts[0], parts[1].lower()
                     # Remove trailing periods from section numbers for consistency
                     section_number = section_number.rstrip('.')
+                    found_sections.append(section_number)
+                    
                     # Check if the section number is in the dictionary
                     if section_number in sections:
                         expected_title = sections[section_number].lower()
                         # Compare the extracted title with the expected title
                         if title == expected_title:
                             print(
-                                Fore.GREEN + f"Section {section_number} title matches: {title}")
+                                Fore.GREEN + f"= Section {section_number} title matches: {title}")
                         else:
                             print(
-                                Fore.RED + f"Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}")
+                                Fore.RED + f"<> Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}")
                     else:
                         print(
-                            f"Section {section_number} ({title}) not found in sections dictionary")
+                            f"+ Section {section_number} ({title}) not found in sections dictionary")
                 else:
                     print(Fore.RED + f"Invalid markdown header format: {line}")
+
+    missing_sections = [section_number for section_number in sections if section_number not in found_sections]
+    for section in missing_sections:
+        print(Fore.RED + f"- Section {section} ({sections[section]}) not found in the document")
 
 
 if __name__ == "__main__":
