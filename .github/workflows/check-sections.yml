@@ -1,6 +1,8 @@
 name: Check Sections
-
-on: [push, pull_request]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
 
 jobs:
   check-sections:
@@ -32,11 +34,11 @@ jobs:
 
     - name: Check sections
       run: |
-        python tools/check-sections.py ${{ matrix.document }}.md ${{ matrix.source }} > output.txt
+        python tools/check-sections.py ${{ matrix.document }}.md ${{ matrix.source }} output-${{ matrix.source }}.txt
 
     - name: Compare sections
       run: |
-        if ! diff -u tests/expected/${{ matrix.document }}-${{ matrix.source }}-sections.txt output.txt; then
+        if ! diff -u tests/expected/${{ matrix.document }}-${{ matrix.source }}-sections.txt output-${{ matrix.source }}.txt; then
           echo "Sections have changed, please verify the diff above and fix or commit changes"
           exit 1
         fi

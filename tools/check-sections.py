@@ -681,7 +681,23 @@ doc_types = {
     "tlsbr": tlsbr,
 }
 
-def check_markdown_headers(filename, sections):
+
+class Writer:
+    def __init__(self, output):
+        self.output = output
+        self.use_color = output == sys.stdout
+
+    def write(self, message, color=None):
+        if self.use_color and color:
+            self.output.write(color + message + Style.RESET_ALL)
+        else:
+            self.output.write(message)
+
+
+def check_markdown_headers(filename, sections, output):
+    out = Writer(output)
+    out.write(f"{doc_type.upper()}\n\n")
+
     found_sections = []
 
     with open(filename, 'r', encoding='utf-8') as file:
@@ -694,38 +710,49 @@ def check_markdown_headers(filename, sections):
                     # Remove trailing periods from section numbers for consistency
                     section_number = section_number.rstrip('.')
                     found_sections.append(section_number)
-                    
+
                     # Check if the section number is in the dictionary
                     if section_number in sections:
                         expected_title = sections[section_number].lower()
                         # Compare the extracted title with the expected title
                         if title == expected_title:
-                            print(
-                                Fore.GREEN + f"= Section {section_number} title matches: {title}")
+                            out.write(
+                                f"= Section {section_number} title matches: {title}\n", Fore.GREEN)
                         else:
-                            print(
-                                Fore.RED + f"<> Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}")
+                            out.write(
+                                f"<> Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}\n", Fore.RED)
                     else:
-                        print(
-                            f"+ Section {section_number} ({title}) not found in sections dictionary")
+                        out.write(
+                            f"+ Section {section_number} ({title}) not found in sections dictionary\n")
                 else:
-                    print(Fore.RED + f"Invalid markdown header format: {line}")
+                    out.write(
+                        f"Invalid markdown header format: {line}\n", Fore.RED)
 
-    missing_sections = [section_number for section_number in sections if section_number not in found_sections]
+    missing_sections = [
+        section_number for section_number in sections if section_number not in found_sections]
     for section in missing_sections:
-        print(Fore.RED + f"- Section {section} ({sections[section]}) not found in the document")
+        out.write(
+            f"- Section {section} ({sections[section]}) not found in the document\n", Fore.RED)
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python check-sections.py <filename> <doc_type>")
+        print(
+            "Usage: python check-sections.py <filename> <doc_type> [output_filename]")
         print(f"doc_type: {' or '.join(doc_types.keys())}")
     else:
         filename = sys.argv[1]
         doc_type = sys.argv[2]
+        output_filename = sys.argv[3] if len(sys.argv) > 3 else None
 
         if doc_type in doc_types:
-            print(f"\033[1m\n{doc_type.upper()}\n\033[0m")
-            check_markdown_headers(filename, doc_types[doc_type])
+            if output_filename:
+                with open(output_filename, 'w') as output_file:
+                    check_markdown_headers(
+                        filename, doc_types[doc_type], output_file)
+            else:
+                check_markdown_headers(
+                    filename, doc_types[doc_type], sys.stdout)
         else:
-            print(f"Invalid doc_type specified. Use {' or '.join(doc_types.keys())}.")
+            print(
+                f"Invalid doc_type specified. Use {' or '.join(doc_types.keys())}.")
