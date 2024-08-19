@@ -1,0 +1,44 @@
+name: Check Sections
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  check-sections:
+    strategy:
+      matrix:
+        source: ['rfc3647']
+        document:
+          - 'entrust'
+        include:
+          - source: 'tlsbr'
+            document: 'entrust'
+
+    name: Check sections of ${{ matrix.document }} against ${{ matrix.source }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r tools/requirements.txt
+
+    - name: Check sections
+      run: |
+        python tools/check-sections.py ${{ matrix.document }}.md ${{ matrix.source }} output-${{ matrix.source }}.txt
+
+    - name: Compare sections
+      run: |
+        if ! diff -u tests/expected/${{ matrix.document }}-${{ matrix.source }}-sections.txt output-${{ matrix.source }}.txt; then
+          echo "Sections have changed, please verify the diff above and fix or commit changes"
+          exit 1
+        fi
