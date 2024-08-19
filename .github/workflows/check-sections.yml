@@ -6,22 +6,22 @@ jobs:
   check-sections:
     strategy:
       matrix:
+        source: ['rfc3647']
         document:
           - 'entrust'
         include:
-          - source: 'rfc3647'
-          - document: 'entrust'
-            source: 'tlsbr'
+          - source: 'tlsbr'
+            document: 'entrust'
 
     name: Check sections of ${{ matrix.document }} against ${{ matrix.source }}
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
