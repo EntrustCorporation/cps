@@ -747,7 +747,7 @@ if __name__ == "__main__":
 
         if doc_type in doc_types:
             if output_filename:
-                with open(output_filename, 'w') as output_file:
+                with open(output_filename, 'w', encoding='utf-8') as output_file:
                     check_markdown_headers(
                         filename, doc_types[doc_type], output_file)
             else:

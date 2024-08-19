@@ -70,8 +70,8 @@ TLSBR
 - Section 3.2.2.5.3 (Reverse Address Lookup) not found in the document
 - Section 3.2.2.5.4 (Any Other Method) not found in the document
 - Section 3.2.2.5.5 (Phone Contact with IP Address Contact) not found in the document
-- Section 3.2.2.5.6 (ACME ìhttp-01î method for IP Addresses) not found in the document
-- Section 3.2.2.5.7 (ACME ìtls-alpn-01î method for IP Addresses) not found in the document
+- Section 3.2.2.5.6 (ACME ‚Äúhttp-01‚Äù method for IP Addresses) not found in the document
+- Section 3.2.2.5.7 (ACME ‚Äútls-alpn-01‚Äù method for IP Addresses) not found in the document
 - Section 3.2.2.6 (Wildcard Domain Validation) not found in the document
 - Section 3.2.2.7 (Data Source Accuracy) not found in the document
 - Section 3.2.2.8 (CAA Records) not found in the document
