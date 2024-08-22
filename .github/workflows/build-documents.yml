@@ -4,17 +4,17 @@ on:
     branches: ["main"]
   pull_request:
   workflow_dispatch:
-  
+
 jobs:
   build_docs:
     strategy:
       matrix:
         document:
-          - 'entrust'
-    name: Build ${{ matrix.document }}
-    runs-on: ubuntu-20.04
+          - "entrust"
+    name: Build Document ${{ matrix.document }}
+    runs-on: ubuntu-20.041
     steps:
-      - name: Checkout the code
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -34,13 +34,14 @@ jobs:
           path: old/
       - name: Link RFC references
         run: |
-          python tools/rfc-links.py ${{ matrix.document }}.md
-          python tools/rfc-links.py old/${{ matrix.document }}.md
+          python tools/rfc_links.py ${{ matrix.document }}.md
+          python tools/rfc_links.py old/${{ matrix.document }}.md
       - name: Link CA/Browser Forum references
         run: |
-          python tools/cabforum-links.py ${{ matrix.document }}.md
-          python tools/cabforum-links.py old/${{ matrix.document }}.md
-      - uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-e5ddc9e4
+          python tools/cabforum_links.py ${{ matrix.document }}.md
+          python tools/cabforum_links.py old/${{ matrix.document }}.md
+      - name: Build Document
+        uses: docker://ghcr.io/vanbroup/build-guidelines-action:sha-e5ddc9e4
         id: build_doc
         with:
           markdown_file: ${{ matrix.document }}.md
@@ -59,4 +60,4 @@ jobs:
             ${{ steps.build_doc.outputs.pdf_file }}
             ${{ steps.build_doc.outputs.docx_file }}
             ${{ steps.build_doc.outputs.pdf_redline_file }}
-          if-no-files-found: 'error'
+          if-no-files-found: "error"
