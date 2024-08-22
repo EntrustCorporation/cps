@@ -278,7 +278,7 @@ rfc3647 = {
 }
 
 tlsbr = {
-    "1.": "INTRODUCTION",
+    "1": "INTRODUCTION",
     "1.1": "Overview",
     "1.2": "Document name and identification",
     "1.2.1": "Revisions",
@@ -302,12 +302,12 @@ tlsbr = {
     "1.6.2": "Acronyms",
     "1.6.3": "References",
     "1.6.4": "Conventions",
-    "2.": "PUBLICATION AND REPOSITORY RESPONSIBILITIES",
+    "2": "PUBLICATION AND REPOSITORY RESPONSIBILITIES",
     "2.1": "Repositories",
     "2.2": "Publication of information",
     "2.3": "Time or frequency of publication",
     "2.4": "Access controls on repositories",
-    "3.": "IDENTIFICATION AND AUTHENTICATION",
+    "3": "IDENTIFICATION AND AUTHENTICATION",
     "3.1": "Naming",
     "3.1.1": "Types of names",
     "3.1.2": "Need for names to be meaningful",
@@ -361,7 +361,7 @@ tlsbr = {
     "3.3.1": "Identification and authentication for routine re-key",
     "3.3.2": "Identification and authentication for re-key after revocation",
     "3.4": "Identification and authentication for revocation request",
-    "4.": "CERTIFICATE LIFE-CYCLE OPERATIONAL REQUIREMENTS",
+    "4": "CERTIFICATE LIFE-CYCLE OPERATIONAL REQUIREMENTS",
     "4.1": "Certificate Application",
     "4.1.1": "Who can submit a certificate application",
     "4.1.2": "Enrollment process and responsibilities",
@@ -430,7 +430,7 @@ tlsbr = {
     "4.12": "Key escrow and recovery",
     "4.12.1": "Key escrow and recovery policy and practices",
     "4.12.2": "Session key encapsulation and recovery policy and practices",
-    "5.": "MANAGEMENT, OPERATIONAL, AND PHYSICAL CONTROLS",
+    "5": "MANAGEMENT, OPERATIONAL, AND PHYSICAL CONTROLS",
     "5.1": "Physical Security Controls",
     "5.1.1": "Site location and construction",
     "5.1.2": "Physical access",
@@ -479,7 +479,7 @@ tlsbr = {
     "5.7.3": "Recovery Procedures after Key Compromise",
     "5.7.4": "Business continuity capabilities after a disaster",
     "5.8": "CA or RA termination",
-    "6.": "TECHNICAL SECURITY CONTROLS",
+    "6": "TECHNICAL SECURITY CONTROLS",
     "6.1": "Key pair generation and installation",
     "6.1.1": "Key pair generation",
     "6.1.1.1": "CA Key Pair Generation",
@@ -519,7 +519,7 @@ tlsbr = {
     "6.6.3": "Life cycle security controls",
     "6.7": "Network security controls",
     "6.8": "Time-stamping",
-    "7.": "CERTIFICATE, CRL, AND OCSP PROFILES",
+    "7": "CERTIFICATE, CRL, AND OCSP PROFILES",
     "7.1": "Certificate profile",
     "7.1.1": "Version number(s)",
     "7.1.2": "Certificate Content and Extensions",
@@ -613,7 +613,7 @@ tlsbr = {
     "7.3": "OCSP profile",
     "7.3.1": "Version number(s)",
     "7.3.2": "OCSP extensions",
-    "8.": "COMPLIANCE AUDIT AND OTHER ASSESSMENTS",
+    "8": "COMPLIANCE AUDIT AND OTHER ASSESSMENTS",
     "8.1": "Frequency or circumstances of assessment",
     "8.2": "Identity/qualifications of assessor",
     "8.3": "Assessor's relationship to assessed entity",
@@ -621,7 +621,7 @@ tlsbr = {
     "8.5": "Actions taken as a result of deficiency",
     "8.6": "Communication of results",
     "8.7": "Self-Audits",
-    "9.": "OTHER BUSINESS AND LEGAL MATTERS",
+    "9": "OTHER BUSINESS AND LEGAL MATTERS",
     "9.1": "Fees",
     "9.1.1": "Certificate issuance or renewal fees",
     "9.1.2": "Certificate access fees",
@@ -675,6 +675,9 @@ tlsbr = {
     "9.17": "Other provisions"
 }
 
+# Default document type for unit tests
+doc_type = None
+
 # Mapping of document types to their corresponding sections
 doc_types = {
     "rfc3647": rfc3647,
@@ -694,46 +697,53 @@ class Writer:
             self.output.write(message)
 
 
-def check_markdown_headers(filename, sections, output):
+def check_markdown_headers(file, sections, output):
     out = Writer(output)
-    out.write(f"{doc_type.upper()}\n\n")
+
+    if doc_type is not None:
+        out.write(f"{doc_type.upper()}\n\n")
 
     found_sections = []
 
-    with open(filename, 'r', encoding='utf-8') as file:
-        for line in file:
-            if line.startswith('#'):
-                # Extract section number and title from the markdown header
-                parts = line.strip('#').strip().split(' ', 1)
-                if len(parts) == 2:
-                    section_number, title = parts[0], parts[1].lower()
-                    # Remove trailing periods from section numbers for consistency
-                    section_number = section_number.rstrip('.')
-                    found_sections.append(section_number)
+    for line in file:
+        if line.startswith('#'):
+            # Extract section number and title from the markdown header
+            parts = line.strip('#').strip().split(' ', 1)
+            if len(parts) == 2:
+                section_number, title = parts[0], parts[1].lower()
+                # Remove trailing periods from section numbers for consistency
+                section_number = section_number.rstrip('.')
+                found_sections.append(section_number)
 
-                    # Check if the section number is in the dictionary
-                    if section_number in sections:
-                        expected_title = sections[section_number].lower()
-                        # Compare the extracted title with the expected title
-                        if title == expected_title:
-                            out.write(
-                                f"= Section {section_number} title matches: {title}\n", Fore.GREEN)
-                        else:
-                            out.write(
-                                f"<> Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}\n", Fore.RED)
+                # Check if the number of # characters matches the expected level
+                level = line.strip().split(' ', 1)
+                header_level = level[0].count('#')
+                section_level = section_number.count('.')  + 1
+                if header_level != section_level:
+                    out.write(f"! Section {section_number} (level {section_level}) does not match header level {header_level}\n", Fore.RED)
+
+                # Check if the section number is in the dictionary
+                if section_number in sections:
+                    expected_title = sections[section_number].lower()
+                    # Compare the extracted title with the expected title
+                    if title == expected_title:
+                        out.write(
+                            f"= Section {section_number} title matches: {title}\n", Fore.GREEN)
                     else:
                         out.write(
-                            f"+ Section {section_number} ({title}) not found in sections dictionary\n")
+                            f"<> Section {section_number} title mismatch. Found: {title}, Expected: {expected_title}\n", Fore.RED)
                 else:
                     out.write(
-                        f"Invalid markdown header format: {line}\n", Fore.RED)
+                        f"+ Section {section_number} ({title}) not found in sections dictionary\n")
+            else:
+                out.write(
+                    f"Invalid markdown header format: {line}\n", Fore.RED)
 
     missing_sections = [
         section_number for section_number in sections if section_number not in found_sections]
     for section in missing_sections:
         out.write(
             f"- Section {section} ({sections[section]}) not found in the document\n", Fore.RED)
-
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -746,13 +756,14 @@ if __name__ == "__main__":
         output_filename = sys.argv[3] if len(sys.argv) > 3 else None
 
         if doc_type in doc_types:
-            if output_filename:
-                with open(output_filename, 'w', encoding='utf-8') as output_file:
+            with open(filename, 'r', encoding='utf-8') as source_file:
+                if output_filename:
+                    with open(output_filename, 'w', encoding='utf-8') as output_file:
+                        check_markdown_headers(
+                            source_file, doc_types[doc_type], output_file)
+                else:
                     check_markdown_headers(
-                        filename, doc_types[doc_type], output_file)
-            else:
-                check_markdown_headers(
-                    filename, doc_types[doc_type], sys.stdout)
+                        source_file, doc_types[doc_type], sys.stdout)
         else:
             print(
                 f"Invalid doc_type specified. Use {' or '.join(doc_types.keys())}.")

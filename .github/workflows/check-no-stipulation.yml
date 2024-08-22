@@ -1,0 +1,33 @@
+name: Check for no stipulation
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  check-no-stipulation:
+    strategy:
+      matrix:
+        document:
+          - "entrust"
+
+    name: Check ${{ matrix.document }}.md for no stipulation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/requirements.txt
+
+      - name: Run check
+        run: |
+          python tools/check_no_stipulation.py ${{ matrix.document }}.md
