@@ -12,7 +12,6 @@ jobs:
         document:
           - "entrust"
     name: Build Document ${{ matrix.document }}
-    runs-on: ubuntu-20.041
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
