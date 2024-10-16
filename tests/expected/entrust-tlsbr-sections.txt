@@ -67,12 +67,12 @@ TLSBR
 = Section 3.2.2.5.3 title matches: reverse address lookup
 = Section 3.2.2.5.4 title matches: any other method
 = Section 3.2.2.5.5 title matches: phone contact with ip address contact
-<> Section 3.2.2.5.6 title mismatch. Found: acme "http-01" method for ip addresses, Expected: acme “http-01” method for ip addresses
-<> Section 3.2.2.5.7 title mismatch. Found: acme "tls-alpn-01" method for ip addresses, Expected: acme “tls-alpn-01” method for ip addresses
+= Section 3.2.2.5.6 title matches: acme "http-01" method for ip addresses
+= Section 3.2.2.5.7 title matches: acme "tls-alpn-01" method for ip addresses
 = Section 3.2.2.6 title matches: wildcard domain validation
 = Section 3.2.2.7 title matches: data source accuracy
 = Section 3.2.2.8 title matches: caa records
-+ Section 3.2.2.9 (authentication of email address) not found in sections dictionary
+<> Section 3.2.2.9 title mismatch. Found: authentication of email address, Expected: multi-perspective issuance corroboration
 + Section 3.2.2.9.1 (validating authority over mailbox via domain) not found in sections dictionary
 + Section 3.2.2.9.2 (validating control over mailbox via email) not found in sections dictionary
 + Section 3.2.2.9.3 (validating applicant as operator of associated mail server(s)) not found in sections dictionary
@@ -354,10 +354,10 @@ TLSBR
 + Section Cross (certificate or subordinate ca certificate) not found in sections dictionary
 ! Section Technically (level 1) does not match header level 2
 + Section Technically (constrained subordinate ca certificate) not found in sections dictionary
-! Section SSL (level 1) does not match header level 2
-+ Section SSL (certificate) not found in sections dictionary
+! Section OV (level 1) does not match header level 2
++ Section OV (tls certificate) not found in sections dictionary
 ! Section EV (level 1) does not match header level 2
-+ Section EV (ssl certificate) not found in sections dictionary
++ Section EV (tls certificate) not found in sections dictionary
 ! Section Client (level 1) does not match header level 2
 + Section Client (authentication certificate) not found in sections dictionary
 ! Section Code (level 1) does not match header level 2
