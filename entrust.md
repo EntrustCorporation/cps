@@ -1,10 +1,10 @@
 ---
 title: Entrust Certificate Services
 subtitle: Certification Practice Statement
-version: 3.22
+version: 3.23
 author:
   - Entrust
-date: July 31, 2024
+date: September 11, 2024
 
 copyright: © 2024 Entrust Limited. All rights reserved
 ---
@@ -96,6 +96,7 @@ This document is called the Entrust Certificate Services Certification Practice 
 | 3.20  | March 26, 2024     | Certificate profile updates |
 | 3.21  | May 14, 2024       | Subject/Subscriber changes, Certificate profile updates |
 | 3.22  | July 31, 2024      | Change SSL Certificate to OV TLS Certificate and EV SSL Certificate to EV TLS Certificate |
+| 3.23  | September 11, 2024 | Correct practices to support verification of Business Entities |
 
 ## 1.3 PKI Participants
 
@@ -979,13 +980,11 @@ Unless otherwise stated below, the CA will verify the identity and/or address of
 In accordance with the EV SSL Guidelines or the VMC Requirements, the CA or the RA will determine:
 
 5. Full legal name;
-6. Business Category, which may be "Private Organization", "Government Entity", or "Non-Commercial Entity";
+6. Business Category;
 7. Jurisdiction of Incorporation or Registration, which will not include information which is not relevant to the level of the Incorporating or Registration Agency;
 8. Registration Number or if there is no Registration Number, the date of registration;
 9. Physical address of Place of Business; and
 10. Operational Existence.
-
-Entrust does not issue Certificates to Business Entity Subjects as defined in SSL EV Guidelines section 11.2.2 or in VMC Requirements section 3.2.2.3.
 
 **S/MIME Certificates**
 
