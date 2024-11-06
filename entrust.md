@@ -985,7 +985,7 @@ In accordance with the EV SSL Guidelines or the VMC Requirements, the CA or the 
 9. Physical address of Place of Business; and
 10. Operational Existence.
 
-Entrust does not issue Certificates to Business Entity Subjects as defined in SSL EV Guidelines section 11.2.2 or in VMC Requirements section 3.2.2.3.
+Entrust does not issue Certificates to Business Entity Subjects as defined in EV SSL Guidelines section 11.2.2 or in VMC Requirements section 3.2.2.3.
 
 **S/MIME Certificates**
 
