@@ -1,14 +1,29 @@
-# CP/CPS Version Control Process
+# Entrust ECS CP/CPS Repository
+
+This repository is designed to manage and update the Entrust ECS CP/CPS (Certification Practice Statement) documents. The CP/CPS document is written in Markdown and built into PDF and Word formats via a build action utilizing Pandoc.
+
+## Directory Structure
+
+The repository is organized into the following directories:
+
+- **.github/**: Contains GitHub Actions workflows to build and test the document(s).
+- **filters/**: Includes additional Lua Pandoc filters.
+- **templates/**: Holds the docx and latex templates for Pandoc and some dependent files used by these templates.
+- **tests/**: Contains test files used to verify the document structure.
+- **tools/**: Contains scripts used to check or modify the markdown document.
+- **entrust.md**: The actual Entrust CP/CPS source document.
+
+## CP/CPS Version Control Process
 
 This document outlines the version control process for updating the Entrust CP/CPS documents using Git.
 
-## Branching Strategy
+### Branching Strategy
 
 - **Main Branch**: The `main` branch contains the latest published version of CP/CPS documents (e.g., version 1.0).
 - **Release Branches**: For each upcoming version, create a new branch from `main` named `vX.Y` (e.g., `v1.1` for version 1.1). Release branches are where approved changes accumulate until the release is finalized.
 - **Feature Branches**: Each change is developed in a separate feature branch created from the relevant release branch (e.g., `v1.1`). Feature branch names should be descriptive and lowercase (e.g., `ballot-sc-001` or `jira-ec-123`).
 
-## Process Steps
+### Process Steps
 
 1. **Create Release Branch**: When preparing a new version, create a release branch from `main` (e.g., `v1.1`). This branch serves as the staging area for the next release.
 
@@ -26,7 +41,7 @@ This document outlines the version control process for updating the Entrust CP/C
 
 7. **Final Merge to Main**: Once the release is complete, merge the release branch (e.g., `v1.1`) into `main` for publication. No additional approvals are needed for this final merge, as all changes in the release branch have been reviewed.
 
-## Example Git Flow
+### Example Git Flow
 
 The diagram below visualizes the process, showing `ballot-sc-001` and `ballot-sc-002` as approved changes merged into `v1.1`. The feature `jira-ec-123` is initially developed from `v1.1` but ultimately deferred to `v1.2`:
 
