@@ -1,10 +1,10 @@
 ---
 title: Entrust Certificate Services
 subtitle: Certification Practice Statement
-version: 3.25
+version: 3.26
 author:
   - Entrust
-date: October 9, 2024
+date: October 15, 2024
 
 copyright: © 2024 Entrust Limited. All rights reserved
 ---
@@ -99,6 +99,7 @@ This document is called the Entrust Certificate Services Certification Practice 
 | 3.23  | September 11, 2024 | Correct practices to support verification of Business Entities |
 | 3.24  | September 19, 2024 | Update for Subscriber Agreement and CPR reporting methods |
 | 3.25  | October 9, 2024    | Update for Government Entity registration number indication |
+| 3.26  | October 15, 2024   | Update certificate policy for SSL.com |
 
 ## 1.3 PKI Participants
 
@@ -2805,11 +2806,11 @@ Root CA Certificates do not contain the certificate policy object identifiers.
 
 **Subordinate CA**
 
-Subordinate CA Certificates may include either the "any policy" certificate policy object identifier or one or more explicit certificate policy object identifiers that indicates compliance with a specific certificate policy.
+Subordinate CA Certificates may include either the "any policy" certificate policy object identifier or one or more explicit certificate policy object identifiers that indicates compliance with a specific certificate policy as listed in §7.1.6.3.
 
 **Third Party Subordinate CA**
 
-Subordinate CA Certificates issued to a Third Party Subordinate CA may include one or more explicit certificate policy object identifiers that indicates the Third Party Subordinate CA’s adherence to and compliance with the requirements documented in its CP and/or CPS. For Third Party Subordinate CAs which issue TLS Certificates, these requirements must include adherence and compliance to the Baseline Requirements.
+Subordinate CA Certificates issued to a Third Party Subordinate CA may include one or more explicit certificate policy object identifiers that indicates the Third Party Subordinate CA’s adherence to and compliance with the requirements documented in its CP and/or CPS. For Third Party Subordinate CAs which issue TLS Certificates, these requirements must include adherence and compliance to the Baseline Requirements. Third Party Subordinate CA certificate policy identifiers are listed in §7.1.6.3.
 
 #### 7.1.6.3 Subscriber Certificates
 
@@ -2837,6 +2838,12 @@ Subscriber Certificates may (or must, if required by an applicable third party r
 - Document Signing Certificates **2.16.840.1.114028.10.1.6**
 - Time-Stamp Certificates **2.16.840.1.114028.10.3.5**
 - Verified Mark Certificates **2.16.840.1.114028.10.1.11**
+
+**SSL.com Certificate Policies:**
+
+- DV TLS Certificates **1.3.6.1.4.1.38064.1.3.1.1**
+- OV TLS Certificates **1.3.6.1.4.1.38064.1.3.1.2**
+- EV TLS Certificates **1.3.6.1.4.1.38064.1.3.1.4**
 
 ### 7.1.7 Usage of Policy Constraints extension
 
