@@ -1,10 +1,10 @@
 ---
 title: Entrust Certificate Services
 subtitle: Certification Practice Statement
-version: 3.24
+version: 3.25
 author:
   - Entrust
-date: September 19, 2024
+date: October 9, 2024
 
 copyright: © 2024 Entrust Limited. All rights reserved
 ---
@@ -98,6 +98,7 @@ This document is called the Entrust Certificate Services Certification Practice 
 | 3.22  | July 31, 2024      | Change SSL Certificate to OV TLS Certificate and EV SSL Certificate to EV TLS Certificate |
 | 3.23  | September 11, 2024 | Correct practices to support verification of Business Entities |
 | 3.24  | September 19, 2024 | Update for Subscriber Agreement and CPR reporting methods |
+| 3.25  | October 9, 2024    | Update for Government Entity registration number indication |
 
 ## 1.3 PKI Participants
 
@@ -978,12 +979,12 @@ Unless otherwise stated below, the CA will verify the identity and/or address of
 
 **EV TLS, EV Code Signing and Verified Mark Certificates**
 
-In accordance with the EV SSL Guidelines or the VMC Requirements, the CA or the RA will determine:
+In accordance with the EV SSL Guidelines, Code Signing Baseline Requirements, or the VMC Requirements, the CA or the RA will determine:
 
 5. Full legal name;
 6. Business Category;
 7. Jurisdiction of Incorporation or Registration, which will not include information which is not relevant to the level of the Incorporating or Registration Agency;
-8. Registration Number or if there is no Registration Number, the date of registration;
+8. Registration Number or if there is no Registration Number, the date of registration. For Government Entities that do not have a Registration Number or readily verifiable date of creation, the phrase “Government Entity” is used in its place;
 9. Physical address of Place of Business; and
 10. Operational Existence.
 
