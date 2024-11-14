@@ -354,10 +354,10 @@ RFC3647
 + Section Cross (certificate or subordinate ca certificate) not found in sections dictionary
 ! Section Technically (level 1) does not match header level 2
 + Section Technically (constrained subordinate ca certificate) not found in sections dictionary
-! Section SSL (level 1) does not match header level 2
-+ Section SSL (certificate) not found in sections dictionary
+! Section OV (level 1) does not match header level 2
++ Section OV (tls certificate) not found in sections dictionary
 ! Section EV (level 1) does not match header level 2
-+ Section EV (ssl certificate) not found in sections dictionary
++ Section EV (tls certificate) not found in sections dictionary
 ! Section Client (level 1) does not match header level 2
 + Section Client (authentication certificate) not found in sections dictionary
 ! Section Code (level 1) does not match header level 2
