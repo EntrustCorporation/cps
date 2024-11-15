@@ -1,8 +1,19 @@
 name: Check Sections
 on:
   push:
-    branches: ["main"]
+    paths:
+      - "tools/**"
+      - "tests/**"
+      - "*.md"
+    paths-ignore:
+      - 'README.md'
   pull_request:
+    paths:
+      - "tools/**"
+      - "tests/**"
+      - "*.md"
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   check-sections:
