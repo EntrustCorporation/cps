@@ -333,6 +333,11 @@ def check_markdown_headers(file, sections, output):
             parts = line.strip('#').strip().split(' ', 1)
             if len(parts) == 2:
                 section_number, title = parts[0], parts[1].lower()
+
+                # Skip header if no section number is found
+                if not section_number.replace('.', '').isdigit():
+                    continue
+
                 # Remove trailing periods from section numbers for consistency
                 section_number = section_number.rstrip('.')
                 found_sections.append(section_number)
