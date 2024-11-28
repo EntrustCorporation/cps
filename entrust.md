@@ -1,10 +1,10 @@
 ---
 title: Entrust Certificate Services
 subtitle: Certification Practice Statement
-version: 3.27
+version: 3.28
 author:
   - Entrust
-date: November 7, 2024
+date: November 21, 2024
 
 copyright: © 2024 Entrust Limited. All rights reserved
 ---
@@ -101,6 +101,7 @@ This document is called the Entrust Certificate Services Certification Practice 
 | 3.25  | October 9, 2024    | Update for Government Entity registration number indication |
 | 3.26  | October 15, 2024   | Update certificate policy for SSL.com |
 | 3.27  | November 7, 2024   | CAB Forum ballots SC-73, SC-75, SC-78, Client Authentication and S/MIME certificate updates, IP address verification update |
+| 3.28  | November 21, 2024  | CAB Form ballot SC-080 |
 
 ## 1.3 PKI Participants
 
@@ -1070,6 +1071,8 @@ The CA or RA may resend the email, fax, SMS, or postal mail in its entirety, inc
 
 The Random Value will remain valid for use in a confirming response for no more than 30 days from its creation.
 
+Effective no later than 15 January 2025, the CA will no longer reuse Domain Contact information obtained using an HTTPS website. Effective no later than 15 July 2025, the CA will no longer reuse any information validated using this method.
+
 ##### 3.2.2.4.3 Phone Contact with Domain Contact
 
 This method of domain validation is not used.
@@ -1147,6 +1150,8 @@ In the event that someone other than a Domain Contact is reached, the CA may req
 In the event of reaching voicemail, the CA may leave the Random Value and the ADN(s) being validated. The Random Value must be returned to the CA to approve the request.
 
 The Random Value shall remain valid for use in a confirming response for no more than 30 days from its creation.
+
+Effective no later than 15 January 2025, the CA will no longer reuse Domain Contact information obtained using an HTTPS website. Effective no later than 15 July 2025, the CA will no longer reuse any information validated using this method.
 
 ##### 3.2.2.4.16 Phone Contact with DNS TXT Record Phone Contact
 
