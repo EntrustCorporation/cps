@@ -1,10 +1,10 @@
 ---
 title: Entrust Certificate Services
 subtitle: Certification Practice Statement
-version: 3.26
+version: 3.27
 author:
   - Entrust
-date: October 15, 2024
+date: November 7, 2024
 
 copyright: © 2024 Entrust Limited. All rights reserved
 ---
@@ -36,7 +36,7 @@ In respect to EV TLS Certificates, Entrust conforms to the current version of th
 
 In respect to Code Signing Certificates, Entrust conforms to the current version of the Baseline Requirements for the Issuance and Management of Publicly-Trusted Code Signing Certificates published at <https://www.cabforum.org>. The Baseline Requirements for Code Signing describe the minimum requirements for Code Signing Certificates. If there is any inconsistency between this document and the Baseline Requirements for Code Signing, the Baseline Requirements for Code Signing take precedence over this document with respect to Code Signing Certificates.
 
-Effective 1 September 2023, in respect to S/MIME Certificates, Entrust conforms to the current version of the Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates published at <https://www.cabforum.org>. The S/MIME Baseline Requirements describe the minimum requirements for S/MIME Certificates. If there is any inconsistency between this document and the S/MIME Baseline Requirements, the S/MIME Baseline Requirements take precedence over this document with respect to S/MIME Certificates.
+In respect to S/MIME Certificates, Entrust conforms to the current version of the Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates published at <https://www.cabforum.org>. The S/MIME Baseline Requirements describe the minimum requirements for S/MIME Certificates. If there is any inconsistency between this document and the S/MIME Baseline Requirements, the S/MIME Baseline Requirements take precedence over this document with respect to S/MIME Certificates.
 
 In respect to Verified Mark Certificates, Entrust conforms to the current version of the Minimum Security Requirements for Issuance of Verified Mark Certificates published at <https://bimigroup.org/supporting-documents/>. The VMC Requirements describe certain minimum requirements that a CA must meet in order to issue Verified Mark Certificates. If there is any inconsistency between this document and the VMC Requirements, the VMC Requirements take precedence over this document with respect to Verified Mark Certificates.
 
@@ -100,6 +100,7 @@ This document is called the Entrust Certificate Services Certification Practice 
 | 3.24  | September 19, 2024 | Update for Subscriber Agreement and CPR reporting methods |
 | 3.25  | October 9, 2024    | Update for Government Entity registration number indication |
 | 3.26  | October 15, 2024   | Update certificate policy for SSL.com |
+| 3.27  | November 7, 2024   | CAB Forum ballots SC-73, SC-75, SC-78, Client Authentication and S/MIME certificate updates, IP address verification update |
 
 ## 1.3 PKI Participants
 
@@ -534,6 +535,8 @@ This CPS and any subsequent changes shall be approved by the Policy Authority.
 
 **Key Pair:** means two mathematically related cryptographic keys, having the properties that (i) one key can be used to encrypt a message that can only be decrypted using the other key, and (ii) even knowing one key, it is believed to be computationally infeasible to discover the other key.
 
+**Linting:** as defined in the Baseline Requirements.
+
 **Mailbox Address:** as defined in the S/MIME Baseline Requirements.
 
 **Mailbox Field:** as defined in the S/MIME Baseline Requirements.
@@ -721,9 +724,9 @@ This CPS is structured in the RFC3647 format.
 
 The CA will host test Web pages that allow ASVs to test their software with Subscriber Certificates that chain up to each publicly trusted Root CA Certificate. The CA will host separate Web pages using Subscriber Certificates that are i. valid, ii. revoked, and iii. expired.
 
-**Code Signing, EV Code Signing and Times-stamp Certificates**
+**Client Authentication, Code Signing, EV Code Signing and Times-stamp Certificates**
 
-Upon request, the CA will issue and make available to ASVs valid Code Signing, EV Code Signing and Time-stamp Certificates that chain up to Root CA Certificates that support these Certificate types.
+Upon request, the CA will issue and make available to ASVs valid Client Authentication, Code Signing, EV Code Signing, and Time-stamp Certificates that chain up to Root CA Certificates that support these Certificate types.
 
 **S/MIME Certificates**
 
@@ -772,24 +775,26 @@ The Subject names in a Certificate comply with the X.501 Distinguished Name (DN)
 
 **OV TLS Certificates**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the name of the organization in the case of a corporation, partnership, or other entity;
-3. "Common Name" (CN) which is the hostname, the fully qualified hostname or path used in the DNS of the secure server;
-4. "Locality" (L), which is the city or locality of the organization’s place of business; and
-5. "State" (ST) (if applicable), which is the state or province of the organization’s place of business.
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the name of the organization and/or DBA/tradename;
+3. "Common Name" (`CN`) which is the hostname, the fully qualified hostname or path used in the DNS of the secure server;
+4. "Locality" (`L`), which is the city or locality of the organization’s place of business; and
+5. "State" (`ST`) (if applicable), which is the state or province of the organization’s place of business.
 
 **EV TLS Certificates**
 
-1. Same as OV TLS Certificates, plus
-2. `serialNumber` which is the registration number of Subscriber,
-3. `businessCategory` which is the applicable business category clause per the EV SSL Guidelines,
-4. `jurisdictionOfIncorporationLocalityName` (if applicable) which is the jurisdiction of registration or incorporation locality of Subscriber,
-5. `jurisdictionOfIncorporationStateOrProvinceName` (if applicable) which is the jurisdiction of registration or incorporation state or province of Subscriber, and
+Same as OV TLS Certificates, with the following additions or exceptions:
+
+1. "Organization Name" (`O`) which is the name of the organization and may include the DBA/tradename;
+2. `serialNumber` which is the registration number of Subscriber;
+3. `businessCategory` which is the applicable business category clause per the EV SSL Guidelines;
+4. `jurisdictionOfIncorporationLocalityName` (if applicable) which is the jurisdiction of registration or incorporation locality of Subscriber;
+5. `jurisdictionOfIncorporationStateOrProvinceName` (if applicable) which is the jurisdiction of registration or incorporation state or province of Subscriber; and
 6. `jurisdictionOfIncorporationCountry` which is the jurisdiction of registration or incorporation country of Subscriber.
 
 The CA does not include any Subject name attributes which are not defined in EV SSL Guidelines section 9.2.
 
-**Client Authentication Certificates**
+**Client Authentication (OV) Certificates**
 
 1. "Country Name" (C) which is the two-letter ISO 3166 code for the of the Subscriber;
 2. "Organization Name" (O) which is the name of the organization in the case of a corporation, partnership, or other entity;
@@ -797,76 +802,77 @@ The CA does not include any Subject name attributes which are not defined in EV 
 4. "Locality" (L), which is the city or locality of the organization’s place of business; and
 5. "State" (ST) (if applicable), which is the state or province of the organization’s place of business.
 
+**Client Authentication (EV) Certificates**
+
+Same as Client Authentication (OV) Certificates, with the following additions or exceptions:
+
+1. "Organization Name" (`O`) which is the name of the organization and may include the DBA/tradename;
+2. `serialNumber` which is the registration number of Subscriber;
+3. `businessCategory` which is the applicable business category clause per the EV SSL Guidelines;
+4. `jurisdictionOfIncorporationLocalityName` (if applicable) which is the jurisdiction of registration or incorporation locality of Subscriber;
+5. `jurisdictionOfIncorporationStateOrProvinceName` (if applicable) which is the jurisdiction of registration or incorporation state or province of Subscriber; and
+6. `jurisdictionOfIncorporationCountry` which is the jurisdiction of registration or incorporation country of Subscriber.
+
 **Code Signing Certificates**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the full legal name of the organization;
-3. "Organizational Unit Name" (OU) which is an optional field;
-4. "Common Name" (CN) which is the same value as the "Organization Name";
-5. "Locality" (L), which is the city or locality of the organization’s place of business; and
-6. "State" (ST), which is the state or province of the organization’s place of business, if applicable
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the full legal name of the organization;
+3. "Organizational Unit Name" (`OU`) which is an optional field;
+4. "Common Name" (`CN`) which is the same value as the "Organization Name";
+5. "Locality" (`L`), which is the city or locality of the organization’s place of business; and
+6. "State" (`ST`), which is the state or province of the organization’s place of business, if applicable
 
 **EV Code Signing Certificates**
 
-1. Same as Code Signing Certificates, plus
-2. `serialNumber` which is the registration number of Subscriber,
-3. `businessCategory` which is the applicable business category clause per the Code Signing Baseline Requirements,
-4. `jurisdictionOfIncorporationLocalityName` (if applicable) which is the jurisdiction of registration or incorporation locality of Subscriber,
-5. `jurisdictionOfIncorporationStateOrProvinceName` (if applicable) which is the jurisdiction of registration or incorporation state or province of Subscriber, and
+Same as Code Signing Certificates, with the following additions or exceptions:
+
+1. "Organization Name" (`O`) which is the name of the organization and may include the DBA/tradename;
+2. `serialNumber` which is the registration number of Subscriber;
+3. `businessCategory` which is the applicable business category clause per the Code Signing Baseline Requirements;
+4. `jurisdictionOfIncorporationLocalityName` (if applicable) which is the jurisdiction of registration or incorporation locality of Subscriber;
+5. `jurisdictionOfIncorporationStateOrProvinceName` (if applicable) which is the jurisdiction of registration or incorporation state or province of Subscriber; and
 6. `jurisdictionOfIncorporationCountry` which is the jurisdiction of registration or incorporation country of Subscriber.
 
 **Class 1 S/MIME Certificates**
 
-1. "Common Name" (CN) which is the e-mail address of the Subject; and
-2. "Email" (E), which is the e-mail address of the Subject.
-
-**Class 2 S/MIME Certificates (Organization-validated)**
-
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the organization name of the Subscriber;
-3. "Organizational Unit Name" (OU) which is an optional field;
-4. Effective no later than 1 September 2023, "Organization Identifier" which is the unique organization identifier of the organization
-5. "Common Name" (CN) which is the organization name of the Subscriber; and
-6. "Email" (E), which is the e-mail address of the Subscriber.
+1. "Common Name" (`CN`) which is the e-mail address of the Subject; and
+2. "Email" (`E`), which is the e-mail address of the Subject.
 
 **Class 2 S/MIME Certificates (Sponsor-validated)**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the organization name of the Subscriber;
-3. "Organizational Unit Name" (OU) which is an optional field;
-4. Effective no later than 1 September 2023, "Organization Identifier" which is the unique organization identifier of the organization
-5. Effective no later than 1 September 2023 for strict policy, "Surname" which is the last name of the Subject
-6. Effective no later than 1 September 2023 for strict policy, "First name" which is the first name of the Subject
-7. "Common Name" (CN) which is the personal name of the Subject; and
-8. "Email" (E), which is the e-mail address of the Subject.
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the organization name of the Subscriber;
+3. "Organization Identifier" which is the unique organization identifier of the organization;
+4. "Common Name" (`CN`) which is the personal name of the Subject; and
+5. "Email" (`E`), which is the e-mail address of the Subject.
 
 **Document Signing Certificates**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the name of the organization in the case of a corporation, partnership, or other entity.;
-3. "Organizational Unit Name" (OU) which is an optional field;
-4. "Email" (E) is an optional field, which is the e-mail address of the Subject;
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the name of the organization in the case of a corporation, partnership, or other entity.;
+3. "Organizational Unit Name" (`OU`) which is an optional field;
+4. "Email" (`E`) is an optional field, which is the e-mail address of the Subject;
 5. `serialNumber` is an optional field, which is randomly generated and assigned to the Subject, if the Subject is an individual; and
-6. "Common Name" (CN) which may be an individual’s name, an organization’s name or the name of a specific role within an organization.
+6. "Common Name" (`CN`) which may be an individual’s name, an organization’s name or the name of a specific role within an organization.
 
 **Time-Stamp Certificates**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the full legal name of the organization;
-3. "Organizational Unit Name" (OU) which is an optional field;
-4. "Common Name" (CN) which is an optional field;
-5. "Locality" (L), which is the city or locality of the organization’s place of business; and
-6. "State" (ST), which is the state or province of the organization’s place of business, if applicable
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the full legal name of the organization;
+3. "Organizational Unit Name" (`OU`) which is an optional field;
+4. "Common Name" (`CN`) which is an optional field;
+5. "Locality" (`L`), which is the city or locality of the organization’s place of business; and
+6. "State" (`ST`), which is the state or province of the organization’s place of business, if applicable
 
 **Verified Mark Certificates**
 
-1. "Country Name" (C) which is the two-letter ISO 3166 code for the country of the Subscriber;
-2. "Organization Name" (O) which is the full legal name of the organization;
-3. "Organizational Unit Name" (OU), (optional);
-4. "Common Name" (CN) (optional) which is either the full legal name of the organization;
+1. "Country Name" (`C`) which is the two-letter ISO 3166 code for the country of the Subscriber;
+2. "Organization Name" (`O`) which is the full legal name of the organization;
+3. "Organizational Unit Name" (`OU`), (optional);
+4. "Common Name" (`CN`) (optional) which is either the full legal name of the organization;
 5. "Street Address", which is the number and street address of the organization’s place of business;
-6. "Locality" (L), which is the city or locality of the organization’s place of business;
-7. "State" (ST), (if applicable) which is the state or province of the organization’s place of business;
+6. "Locality" (`L`), which is the city or locality of the organization’s place of business;
+7. "State" (`ST`), (if applicable) which is the state or province of the organization’s place of business;
 8. "Postal Code" which is the postal code of the organization’s place of business (optional);
 9. `serialNumber` which is the registration number of Subscriber;
 10. `businessCategory` which is the applicable business category clause per the VMC Requirements;
@@ -991,7 +997,7 @@ In accordance with the EV SSL Guidelines, Code Signing Baseline Requirements, or
 
 **S/MIME Certificates**
 
-Effective no later than 1 September 2023, the CA or RA will collect and retain evidence supporting the following identity attributes for the organization:
+The CA or RA will collect and retain evidence supporting the following identity attributes for the organization:
 
 11. Formal name of the legal entity;
 12. A registered DBA or trade name of the organization (if included in the Subject);
@@ -1020,7 +1026,7 @@ This agency information includes the following:
 
 #### 3.2.2.2 DBA/Tradename
 
-If the subject organization field is a DBA or tradename, the CA or the RA will verify the Applicant’s right to use the DBA/tradename using at least one of the following:
+If the subject organization field is or includes a DBA or tradename, the CA or the RA will verify the Applicant’s right to use the DBA/tradename using at least one of the following:
 
 1. Documentation provided by, or communication with, a government agency in the jurisdiction of the Applicant’s legal creation, existence, or recognition;
 2. A Reliable Data Source;
@@ -1030,9 +1036,9 @@ If the subject organization field is a DBA or tradename, the CA or the RA will v
 
 The CA or RA ensures the registration of the DBA or tradename is valid.
 
-**EV TLS, EV Code Signing Certificates, and Verified Mark Certificates**
+**OV TLS, EV TLS, EV Code Signing Certificates, and Verified Mark Certificates**
 
-The CA verifies the Applicant has registered its use of the DBA or tradename with the appropriate government agency for such filings in the jurisdiction of its Place of Business. If a DBA or tradename is used, it will be included at the beginning of the organization field followed by the full legal organization name in parenthesis.
+The CA verifies the Applicant has registered its use of the DBA or tradename with the appropriate government agency for such filings in the jurisdiction of its Place of Business. If a DBA or tradename is used, it will be included at the beginning of the organization field followed by the full legal organization name in parenthesis, if required.
 
 #### 3.2.2.3 Verification of Country
 
@@ -1221,23 +1227,17 @@ CAs will maintain a record of which IP Address validation method, including the 
 
 ##### 3.2.2.5.1 Agreed-Upon Change to Website
 
-This method of IP Address validation is not used.
+Confirming the Applicant’s control over the requested IP Address by confirming the presence of a Random Value contained in the content of a file or webpage in the form of a meta tag under the “/.well-known/pki-validation” directory, or another path registered with IANA for the purpose of validating control of IP Addresses, on the IP Address that is accessible by the CA via HTTP/HTTPS over an Authorized Port. The Request Token or Random Value will not appear in the request.
+
+The CA will provide a Random Value unique to the certificate request and will not use the Random Value after 30 days.
 
 ##### 3.2.2.5.2 Email, Fax, SMS, or Postal Mail to IP Address Contact
 
-Confirm the Applicant’s control over the IP Address by sending a Random Value via email, fax, SMS, or postal mail and then receiving a confirming response utilizing the Random Value. The Random Value must be sent to an email address, fax/SMS number, or postal mail address identified as an IP Address Contact.
-
-Each email, fax, SMS, or postal mail may confirm control of multiple IP Addresses.
-
-The CA may send the email, fax, SMS, or postal mail identified under this section to more than one recipient provided that every recipient is identified by the IP Address Registration Authority as representing the IP Address Contact for every IP Address being verified using the email, fax, SMS, or postal mail.
-
-The Random Value is unique in each email, fax, SMS, or postal mail.
-
-The CA may resend the email, fax, SMS, or postal mail in its entirety, including re-use of the Random Value, provided that the communication’s entire contents and recipient(s) remain unchanged. The Random Value will remain valid for use in a confirming response for no more than 30 days from its creation.
+This method of IP Address validation is not used.
 
 ##### 3.2.2.5.3 Reverse Address Lookup
 
-Confirm the Applicant’s control over the IP Address by obtaining a Domain Name associated with the IP Address through a reverse-IP lookup on the IP Address and then verifying control over the FQDN using a method permitted under Baseline Requirements section 3.2.2.4.
+This method of IP Address validation is not used.
 
 ##### 3.2.2.5.4 Any Other Method
 
@@ -1279,7 +1279,7 @@ The CA will only use domain validation methods in §3.2.2.4 to perform this veri
 
 The CA confirms the Applicant’s control over each Mailbox Field to be included in a Certificate by sending a Random Value via email and then receiving a confirming response utilizing the Random Value. Control over each Mailbox Address is confirmed using a unique Random Value. The Random Value is only to the email address being validated and is not be shared in any other way. The Random Value is unique in each email.
 
-Effective no later than 1 September 2023, the Random Value remains valid for use in a confirming response for no more than 24 hours from its creation. The Random Value will be reset upon each instance of the email sent by the CA to a Mailbox Address, however all relevant Random Values sent to that Mailbox Address may remain valid for use in a confirming response within the validity period. In addition, the Random Value will be reset upon first use by the user if intended for additional use as an authentication factor following the Mailbox Address verification.
+The Random Value remains valid for use in a confirming response for no more than 24 hours from its creation. The Random Value will be reset upon each instance of the email sent by the CA to a Mailbox Address, however all relevant Random Values sent to that Mailbox Address may remain valid for use in a confirming response within the validity period. In addition, the Random Value will be reset upon first use by the user if intended for additional use as an authentication factor following the Mailbox Address verification.
 
 ##### 3.2.2.9.3 Validating applicant as operator of associated mail server(s)
 
@@ -1606,15 +1606,31 @@ If a court or government body with jurisdiction over the activities covered by a
 
 ### 4.3.1 CA actions during certificate issuance
 
-Certificate issuance by the Root CA requires an individual authorized by the CA (i.e. the CA system operator, system officer, or PKI administrator) to deliberately issue a direct command in order for the Root CA to perform a certificate signing operation.
+#### 4.3.1.1	Manual Authorization of Certificate Issuance for Root CAs
+
+Certificate issuance by the Root CA requires at least two individuals authorized by the CA (i.e. the CA system operator, system officer, or PKI administrator), where on will deliberately issue a direct command in order for the Root CA to perform a certificate signing operation.
+
+Roots CA Private Keys will not sign Subscriber Certificates.
+
+#### 4.3.1.2	Issuance of Subscriber Certificate
 
 The CA will not issue Certificates with validity period that exceeds the validity period of the corresponding Root CA Certificate. The CA will not backdate the notBefore date of a Subscriber Certificate.
 
 The CA enforces multi-factor authentication for all accounts capable of causing certificate issuance or performing Registration Authority. In addition, the CA implements technical controls operated to restrict issuance of OV TLS, EV TLS and S/MIME Certificates through accounts which are limited to a set of pre-approved domains or email addresses.
 
-**OV and EV TLS Certificates**
+**Mark Certificates**
 
-OV and EV TLS Certificate requests are reviewed using linting software to monitor adherences to this CPS, the Baseline Requirements and the EV SSL Guidelines limited to the linter coverage.
+Before issuance of a Mark Certificate, the CA will log the Mark Certificate pre-certificate (including all the data included in the Subject field of the certificate plus the Mark Representation) to one or more public CT logs.
+
+#### 4.3.1.3	Linting of To-be-signed Certificate Content
+
+**OV TLS, EV TLS and S/MIME Certificates**
+
+The CA will perform Linting on to-be-signed contents before an OV TLS, EV TLS or S/MIME Certificate is signed with the Private Key. Certificates will not be signed with the Private Key, if the to-be-signed contents fails the Linting process.
+
+#### 4.3.1.4	Linting of Issued Certificates
+
+The CA may use a Linting process to test Certificates.
 
 ### 4.3.2 Notification to subscriber by the CA of issuance of certificate
 
@@ -1666,7 +1682,7 @@ CAs or RAs may provide a Certificate lifecycle monitoring service which will sup
 
 ### 4.6.2 Who may request renewal
 
-Subscribers or Subscriber agents may request renewal of Certificates.
+Subjects, Subscribers or Subscriber agents may request renewal of Certificates.
 
 ### 4.6.3 Processing certificate renewal requests
 
@@ -1767,7 +1783,7 @@ Where required by the third party requirements specified in §1.1, the CA will r
 1. The Subscriber requests in writing, without specifying a CRLreason, that the CA revoke the Certificate (no reasonCode in CRL);
 2. The Subscriber notifies the CA that the original Certificate request was not authorized and does not retroactively grant authorization (privilegeWithdrawn (9) reasonCode);
 3. The CA obtains evidence that the Subscriber’s Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise (keyCompromise (1) reasonCode);
-4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber's Private Key based on the Public Key in the Certificate (such as a Debian weak key, see <https://wiki.debian.org/SSLkeys>) (keyCompromise (1) reasonCode);or
+4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber's Private Key based on the Public Key in the Certificate, including but not limited to those identified in §6.1.1.3(v) (keyCompromise (1) reasonCode); or
 5. The CA obtains evidence that the validation of the domain authorization or control for any FQDN, IP Address or email address in the Certificate should not be relied upon (superceded (4) reasonCode).
 6. A Certificate is used to digitally sign Suspect Code (keyCompromise (1) reasonCode).
 
@@ -2309,8 +2325,11 @@ The CA will reject a Certificate request if one or more of the following conditi
 1. The Key Pair does not meet the requirements set forth in §6.1.5 and/or §6.1.6;
 2. There is clear evidence that the specific method used to have generate the Private Key was flawed;
 3. The CA is aware of a demonstrated or proven method that exposes the Private Key to compromise;
-4. The CA has previously been made aware that the Private Key has suffered a Key Compromise, such as through the provisions of §4.9.1.1;
-5. The CA is aware of a demonstrated or proven method to easily compute the Private Key based on the Public Key (such as a Debian weak key, see <https://wiki.debian.org/SSLkeys>).
+4. The CA has previously been notified that the Private Key has suffered a Key Compromise, using the CA’s procedure for revocation request as described in §4.9.3 and §4.9.12;
+5. The CA is aware of a Public Key corresponding to an industry-demonstrated or proven method to easily compute the Applicant’s weak Private Key based. For requests submitted on or after November 15, 2024, at least the following precautions will be implemented:
+    1. In the Public Key (such as a case of Debian weak keys vulnerability (https://wiki.debian.org/SSLkeys), the CA will reject all keys found at https://github.com/cabforum/Debian-weak-keys/ for each key type (e.g. RSA, ECDSA) and size listed in the repository. For all other keys meeting the requirements of §6.1.5, with the exception of RSA key sizes greater than 8192 bits, the CA will reject Debian weak keys.
+    2. In the case of ROCA vulnerability, the CA will reject keys identified by the tools available at https://github.com/crocs-muni/roca or equivalent.
+    3. In the case of Close Primes vulnerability (https://fermatattack.secvuln.info/), the CA will reject weak keys which can be factored within 100 rounds using Fermat’s factorization method.
 
 **OV and EV TLS Certificates**
 
@@ -2639,7 +2658,7 @@ No stipulation.
 
 ### 6.6.1 System development controls
 
-Systems developed by the CA are deployed in accordance with Entrust software lifecycle development standards.
+The CA will monitor for updated versions of Linting software and plan for updates no later than three (3) months from the release of the update.
 
 ### 6.6.2 Security management controls
 
@@ -2834,7 +2853,8 @@ Subscriber Certificates may (or must, if required by an applicable third party r
 **Entrust Certificate Policies:**
 
 - EV TLS Certificates **2.16.840.1.114028.10.1.2**
-- Client Authentication Certificates **2.16.840.1.114028.10.1.5.1; or 2.16.840.1.114028.10.1.5.2**
+- Client Authentication (OV) Certificates	**2.16.840.1.114028.10.1.14.1.1**
+- Client Authentication (EV) Certificates	**2.16.840.1.114028.10.1.14.1.2**
 - Document Signing Certificates **2.16.840.1.114028.10.1.6**
 - Time-Stamp Certificates **2.16.840.1.114028.10.3.5**
 - Verified Mark Certificates **2.16.840.1.114028.10.1.11**
@@ -3006,11 +3026,7 @@ The authoritative version of the audit report must be English language, availabl
 
 ## 8.7 Self-Audits
 
-All Subscriber Certificates are self-audited using post-issuance linting software to monitor adherence to the applicable items of this CPS, limited to the linter coverage.
-
-**OV and EV TLS Certificates**
-
-OV and EV TLS Certificates are self-audited using linting software to monitor adherences to this CPS, the Baseline Requirements and the EV SSL Guidelines, limited to the linter coverage.
+All Subscriber Certificates are self-audited using Linting software to monitor adherence to the applicable items of this CPS, limited to the linter coverage.
 
 **Technically Constrained Subordinate CA Certificates**
 
@@ -3386,7 +3402,7 @@ All references in this CPS to "section" or "§" refer to the sections of this CP
 | Extension: authorityInfoAccess    | Not critical           | Must contain one AccessDescription with an accessMethod of caIssuers and a Location of type uniformResourceIdentifier and one AccessDescription with an accessMethod of ocsp and a Location of type uniformResourceIdentifier |
 | Extension: cRLDistributionPoints  | Not critical           | Must have at least one DistributionPoint containing a fullName of type uniformResourceIdentifier |
 
-## Client Authentication Certificate
+## Client Authentication (OV) Certificate
 
 | **Field**                         | **Critical Extension** | **Content** |
 | --- | -- | ------ |
@@ -3396,6 +3412,21 @@ All references in this CPS to "section" or "§" refer to the sections of this CP
 | Extension: certificatePolicies    | Not critical           | Must contain at least one set of policyInformation containing at least a policyIdentifier |
 | Extension: basicConstraints       | Critical               | Empty or not present |
 | Extension: subjectAltName         | Not critical           | Must contain at the commonName and all names must either be of type dNSName or iPAddress |
+| Extension: keyUsage               | Critical               | digitalSignature and/or keyAgreement bit must be set, other bits should not be set |
+| Extension: extKeyUsage            | Not critical           | Must include clientAuth other values must not be set |
+| Extension: authorityInfoAccess    | Not critical           | Must contain one AccessDescription with an accessMethod of caIssuers and a Location of type uniformResourceIdentifier and one AccessDescription with an accessMethod of ocsp and a Location of type uniformResourceIdentifier |
+| Extension: cRLDistributionPoints  | Not critical           | Must have at least one DistributionPoint containing a fullName of type uniformResourceIdentifier |
+
+## Client Authentication (EV) Certificate
+
+| **Field**                         | **Critical Extension** | **Content** |
+| --- | -- | ------ |
+| Subject                           |                        | Must contain countryName, localityName jurisdiction country, organizationName business category, serial number of subscriber and commonName |
+| Extension: subjectKeyIdentifier   | Not critical           | 160-bit SHA-1 hash of subjectPublicKey per RFC 5280 |
+| Extension: authorityKeyIdentifier | Not critical           | Matches subjectKeyIdentifier of signing certificate |
+| Extension: certificatePolicies    | Not critical           | Must contain at least one set of policyInformation containing at least a policyIdentifier |
+| Extension: basicConstraints       | Critical               | Empty or not present |
+| Extension: subjectAltName         | Not critical           | Must contain at the commonName and all names must either be of type dNSName |
 | Extension: keyUsage               | Critical               | digitalSignature and/or keyAgreement bit must be set, other bits should not be set |
 | Extension: extKeyUsage            | Not critical           | Must include clientAuth other values must not be set |
 | Extension: authorityInfoAccess    | Not critical           | Must contain one AccessDescription with an accessMethod of caIssuers and a Location of type uniformResourceIdentifier and one AccessDescription with an accessMethod of ocsp and a Location of type uniformResourceIdentifier |
@@ -3448,7 +3479,7 @@ All references in this CPS to "section" or "§" refer to the sections of this CP
 
 | **Field**                         | **Critical Extension** | **Content** |
 | --- | -- | ------ |
-| Subject                           |                        | Must contain countryName, localityName organizationName, commonName and emailAddress with rfc822Name<br><br>Effective 1 September 2023, must contain organizationIdentifier and may contain givenName and surname |
+| Subject                           |                        | Must contain countryName, localityName organizationName, commonName, emailAddress with rfc822Name, and  organizationIdentifier; may contain givenName and surname |
 | Extension: subjectKeyIdentifier   | Not critical           | 160-bit SHA-1 hash of subjectPublicKey per RFC 5280 |
 | Extension: authorityKeyIdentifier | Not critical           | Matches subjectKeyIdentifier of signing certificate |
 | Extension: certificatePolicies    | Not critical           | Must contain at least one set of policyInformation containing reserved certificate policy identifier |
