@@ -347,36 +347,3 @@ RFC3647
 + Section 9.17.2 (fiduciary relationships) not found in sections dictionary
 + Section 9.17.3 (waiver) not found in sections dictionary
 + Section 9.17.4 (interpretation) not found in sections dictionary
-+ Section Appendix (a - certificate profiles) not found in sections dictionary
-! Section Root (level 1) does not match header level 2
-+ Section Root (ca certificate) not found in sections dictionary
-! Section Cross (level 1) does not match header level 2
-+ Section Cross (certificate or subordinate ca certificate) not found in sections dictionary
-! Section Technically (level 1) does not match header level 2
-+ Section Technically (constrained subordinate ca certificate) not found in sections dictionary
-! Section OV (level 1) does not match header level 2
-+ Section OV (tls certificate) not found in sections dictionary
-! Section EV (level 1) does not match header level 2
-+ Section EV (tls certificate) not found in sections dictionary
-! Section Client (level 1) does not match header level 2
-+ Section Client (authentication certificate) not found in sections dictionary
-! Section Code (level 1) does not match header level 2
-+ Section Code (signing certificate) not found in sections dictionary
-! Section EV (level 1) does not match header level 2
-+ Section EV (code signing certificate) not found in sections dictionary
-! Section S/MIME (level 1) does not match header level 2
-+ Section S/MIME (class 1 certificate) not found in sections dictionary
-! Section S/MIME (level 1) does not match header level 2
-+ Section S/MIME (class 2 certificate) not found in sections dictionary
-! Section Document (level 1) does not match header level 2
-+ Section Document (signing certificate) not found in sections dictionary
-! Section Time-Stamp (level 1) does not match header level 2
-+ Section Time-Stamp (certificate) not found in sections dictionary
-! Section Verified (level 1) does not match header level 2
-+ Section Verified (mark certificate) not found in sections dictionary
-! Section Government (level 1) does not match header level 2
-+ Section Government (mark certificate) not found in sections dictionary
-! Section Mark (level 1) does not match header level 2
-+ Section Mark (certificate) not found in sections dictionary
-+ Section Appendix (b - subordinate ca certificates) not found in sections dictionary
-+ Section Appendix (c - vmc terms of use ("vmc terms")) not found in sections dictionary
