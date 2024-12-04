@@ -16,6 +16,7 @@ Entrust Limited ("Entrust") uses its award winning suite of software products to
 
 The Entrust CAs issue Certificates, which include the following Certificate Types:
 
+- DV TLS Certificate(s)
 - OV TLS Certificate(s)
 - EV TLS Certificate(s)
 - Client Authentication Certificate(s)
@@ -30,7 +31,7 @@ The Entrust CAs issue Certificates, which include the following Certificate Type
 
 This CPS describes the practices and procedures of (i) the CAs, and (ii) RAs operating under the CAs. This CPS also describes the terms and conditions under which Entrust makes CA and RA services available in respect to Certificates. This CPS is applicable to all persons, entities, and organizations, including all Applicants, Subscribers, Relying Parties, Resellers, Co-marketers and any other persons, entities, or organizations that have a relationship with (i) Entrust in respect to Certificates and/or any services provided by Entrust in respect to Certificates, or (ii) any RAs operating under a CAs, or any Resellers or Co-marketers providing any services in respect to Certificates. This CPS is incorporated by reference into all Certificates issued by Entrust CAs. This CPS provides Applicants, Subscribers, Relying Parties, Resellers, Co-marketers and other persons, entities, and organizations with a statement of the practices and policies of the CAs and also of the RAs operating under the CAs. This CPS also provides a statement of the rights and obligations of Entrust, any third parties that are operating RAs under the CAs, Applicants, Subscribers, Relying Parties, Resellers, Co-marketers and any other persons, entities, or organizations that may use or rely on Certificates or have a relationship with a CA or a RA operating under a CA in respect to Certificates and/or any services in respect to Certificates.
 
-In respect to OV TLS Certificates, Entrust conforms to the current version of the CA/Browser Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates published at <https://www.cabforum.org>. The Baseline Requirements describe certain minimum requirements that a CA must meet in order to issue OV TLS Certificates. In the event of any inconsistency between this CPS and the Baseline Requirements, the Baseline Requirements take precedence over this CPS with respect to OV TLS Certificates.
+In respect to TLS Certificates, Entrust conforms to the current version of the CA/Browser Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates published at <https://www.cabforum.org>. The Baseline Requirements describe certain minimum requirements that a CA must meet in order to issue TLS Certificates. In the event of any inconsistency between this CPS and the Baseline Requirements, the Baseline Requirements take precedence over this CPS with respect to TLS Certificates.
 
 In respect to EV TLS Certificates, Entrust conforms to the current version of the Guidelines for the Issuance and Management of Extended Validation Certificates published at <https://www.cabforum.org>. The EV SSL Guidelines describe certain minimum requirements that a CA must meet in order to issue EV TLS Certificates. In the event of any inconsistency between this CPS and the EV SSL Guidelines, the EV SSL Guidelines take precedence over this CPS with respect to EV TLS Certificates.
 
@@ -142,6 +143,16 @@ SHA256 fingerprint: E874FE2531EAE4A4B6B62F37496BBAE90EB1D8FC8CEDBEBB00A182CFACDC
 - [**Entrust Verified Mark Root Certification Authority – VMCR1**](https://web.entrust.com/root-certificates/VMRC1.cer)  
 SHA256 fingerprint: 7831D95A47D42508CD5C9E6264F9096BAC19F04EB9B7C8BDD35FFFC71C189617
 
+**AffirmTrust Networking**, <https://www.affirmtrust.com/downloads/affirmtrust_networking.crt>, with SHA256 fingerprint 0A81EC5A929777F145904AF38D5D509F66B5E2C58FCDB531058B0E17F3F0B41B
+
+**AffirmTrust Commercial**, <https://www.affirmtrust.com/downloads/affirmtrust_commercial.crt>, with SHA256 fingerprint 0376AB1D54C5F9803CE4B2E201A0EE7EEF7B57B636E8A93C9B8D4860C96F5FA7
+
+**AffirmTrust Premium**, <https://www.affirmtrust.com/downloads/affirmtrust_premium.crt>, with SHA256 fingerprint 70A73F7F376B60074248904534B11482D5BF0E698ECC498DF52577EBF2E93B9A
+
+**AffirmTrust Premium ECC**, <https://www.affirmtrust.com/downloads/affirmtrust_premium_ecc.crt>, with SHA256 fingerprint BD71FDF6DA97E4CF62D1647ADD2581B07D79ADF8397EB4ECBA9C5E8488821423
+
+**AffirmTrust 4K TLS Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_aft4ktlsr2022.crt>, with SHA256 fingerprint A7DEDF5A842167DD12FDAA0F2080E73295B8B8BEA71B2094EA0950945A482FC1
+
 **Externally Issued Cross Certificates**
 
 - Microsoft Code Verification Root > Entrust G2
@@ -162,7 +173,7 @@ Third Party RAs may not be delegated to validate FQDNs, IP Addresses or email ad
 
 The CA may designate Enterprise RAs to verify Certificate requests from the Enterprise RA’s own organization or from an organization of which the Enterprise RA is an agent. The Enterprise RA may as stated in this CPS:
 
-1. authorize issuance of OV TLS and EV TLS Certificates with FQDNs which must be within the Subscriber’s Domain Namespace and that the Subject organization name is either that of the Enterprise RA’s own enterprise, or an Affiliate of such enterprise, or that the Enterprise RA is an agent of the named Subject ;
+1. authorize issuance of TLS Certificates with FQDNs which must be within the Subscriber’s Domain Namespace and that the Subject organization name is either that of the Enterprise RA’s own enterprise, or an Affiliate of such enterprise, or that the Enterprise RA is an agent of the named Subject ;
 2. authorize issuance of S/MIME Certificates with email domains which the enterprise owns or controls and that the Subject organization name is either that of the Enterprise RA’s own enterprise, or an Affiliate of such enterprise, or that the Enterprise RA is an agent of the named Subject;
 3. authorize issuance of other Certificates;
 4. verify a meaningful representation of personal name, given name, and/or surname of the Subject of an S/MIME Certificate;
@@ -189,9 +200,9 @@ Time-stamp Authorities are provided by Entrust which may be used by a Subscriber
 
 This CPS is applicable to the following Certificate Types.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
-OV and EV TLS Certificates are intended for use in establishing web-based data communication conduits via TLS/SSL protocols. OV and EV TLS Certificates conform to the requirements of the ITU-T X.509 v3 standard. The primary purpose of an OV or EV TLS Certificate is to facilitate the exchange of encryption keys in order to enable the encrypted communication of information over the Internet between the user of an Internet browser and a secure server.
+TLS Certificates are intended for use in establishing web-based data communication conduits via TLS/SSL protocols. TLS Certificates conform to the requirements of the ITU-T X.509 v3 standard. The primary purpose of a TLS Certificate is to facilitate the exchange of encryption keys in order to enable the encrypted communication of information over the Internet between the user of an Internet browser and a secure server.
 
 **Client Authentication Certificates**
 
@@ -223,7 +234,7 @@ The use of all Certificates issued by the CA shall be for lawful purposes and co
 
 Certificates and the services provided by Entrust in respect to Certificates are not designed, manufactured, or intended for use in or in conjunction with any application in which failure could lead to death, personal injury or severe physical or property damage, including the monitoring, operation or control of nuclear facilities, mass transit systems, aircraft navigation or communications systems, air traffic control, weapon systems, medical devices or direct life support machines, and all such uses are prohibited.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
 Certificate issuance is prohibited unless the Domain Name Registrant has been approved or authorized a Certificate request. Certificates issued under this CPS may not be used to conduct surreptitious interception by third parties, such as "traffic management" or "man-in-the-middle".
 
@@ -292,7 +303,7 @@ This CPS and any subsequent changes shall be approved by the Policy Authority.
 
 **CA Key Pair**: as defined in the Baseline Requirements.
 
-**Certificate:** means a digital document issued by the CA that, at a minimum: (a) identifies the CA issuing it, (b) names or otherwise identifies a Subject, (c) contains a Public Key of a Key Pair, (d) identifies its operational period, and (e) contains a serial number and is digitally signed by a CA. Certificate includes the following Certificate types issued by the CA; S/MIME Certificate, Client Authentication Certificate, Code Signing Certificate, Document Signing Certificate, EV Code Signing Certificate, EV TLS Certificate, OV TLS Certificate, Subordinate CA Certificate, Time-Stamp Certificate and Verified Mark Certificate.
+**Certificate:** means a digital document issued by the CA that, at a minimum: (a) identifies the CA issuing it, (b) names or otherwise identifies a Subject, (c) contains a Public Key of a Key Pair, (d) identifies its operational period, and (e) contains a serial number and is digitally signed by a CA. Certificate includes the following Certificate types issued by the CA; S/MIME Certificate, Client Authentication Certificate, Code Signing Certificate, Document Signing Certificate, EV Code Signing Certificate, EV TLS Certificate, OV TLS Certificate, DV TLS Certificate, Subordinate CA Certificate, Time-Stamp Certificate and Verified Mark Certificate.
 
 **Certificate Application:** means the form and application information requested by an RA operating under a CA and submitted by an Applicant when applying for the issuance of a Certificate.
 
@@ -357,6 +368,8 @@ This CPS and any subsequent changes shall be approved by the Policy Authority.
 **DNS TXT Record Email Contact:** as defined in the Baseline Requirements.
 
 **DNS TXT Record Phone Contact:** as defined in the Baseline Requirements.
+
+**DV TLS Certificate:** means Certificate issued by a CA meeting the domain-validated requirements of the Baseline Requirements. 
 
 **Enterprise RA:** as defined in the Baseline Requirements.
 
@@ -528,6 +541,7 @@ This CPS and any subsequent changes shall be approved by the Policy Authority.
 | DN          | Distinguished Name |
 | DNS         | Domain Name System |
 | DNSSEC      | Domain Name System Security Extensions |
+| DV          | Domain Validated |
 | ECC         | Elliptic Curve Cryptography |
 | EKU         | Extended Key Usage |
 | EV          | Extended Validation |
@@ -579,7 +593,7 @@ The CA publishes its CPS, CA Certificates, Subscriber Agreements, Relying Party 
 
 This CPS is structured in the RFC3647 format.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
 The CA will host test Web pages that allow ASVs to test their software with Subscriber Certificates that chain up to each publicly trusted Root CA Certificate. The CA will host separate Web pages using Subscriber Certificates that are i. valid, ii. revoked, and iii. expired.
 
@@ -631,6 +645,10 @@ The CA and RA must follow the verification procedures in this CPS, the EV SSL Gu
 ### 3.1.1 Types of names
 
 The Subject names in a Certificate comply with the X.501 Distinguished Name (DN) form. The CAs shall use a single naming convention as set forth below.
+
+**DV TLS Certificates**
+
+1. "Common Name" (`CN`) which is the hostname, the fully qualified hostname or path used in the DNS of the secure server.
 
 **OV TLS Certificates**
 
@@ -760,11 +778,7 @@ The Certificates issued pursuant to this CPS are meaningful only if the names th
 
 **TLS and Client Authentication Certificates**
 
-The value of the Common Name to be used in the Certificate is the Subscriber’s fully qualified hostname or path that is used in the DNS of the secure server on which the Subscriber is intending to install the OV TLS Certificate. Notwithstanding the preceding sentence, the Common Name may include wildcard characters (i.e., an asterisk character).
-
-**EV TLS Certificates**
-
-The value of the Common Name to be used in an EV TLS Certificate is the Subscriber’s FQDN that is used in the DNS of the secure server on which the Subscriber is intending to install the EV TLS Certificate. The FQDN for an EV TLS Certificate cannot be an IP Address or a Wildcard Domain Name.
+The value of the Common Name to be used in the Certificate is the Subscriber’s fully qualified hostname or path that is used in the DNS of the secure server on which the Subscriber is intending to install the TLS Certificate. Notwithstanding the preceding sentence, the Common Name of DV TLS and OV TLS Certificates may include wildcard characters (i.e., an asterisk character).
 
 **Code Signing Certificates**
 
@@ -843,6 +857,9 @@ Unless otherwise stated below, the CA will verify the identity and/or address of
 3. A site visit by the CA or a third party who is acting as an agent for the CA; or
 4. An Attestation Letter.
 
+**DV TLS Certificates**
+Identity and address of the Applicant are not included in DV TLS Certificates.
+
 **EV TLS, EV Code Signing and Verified Mark Certificates**
 
 In accordance with the EV SSL Guidelines, Code Signing Baseline Requirements, or the VMC Requirements, the CA or the RA will determine:
@@ -905,7 +922,7 @@ Verification of country will be done in accordance with the methods of §3.2.2.1
 
 #### 3.2.2.4 Validation of Domain Authorization or Control
 
-The CA will confirm that prior to issuance, the CA or the RA validated each Fully‐Qualified Domain Name (FQDN) listed in the OV or EV TLS Certificate using at least one of the methods listed below.
+The CA will confirm that prior to issuance, the CA or the RA validated each Fully‐Qualified Domain Name (FQDN) listed in the TLS Certificate using at least one of the methods listed below.
 
 Completed validations of Applicant authority may be used for the issuance of multiple Certificates over time. For purposes of domain validation, the term Applicant includes the Applicant's Parent Company, Subsidiary Company, or Affiliate.
 
@@ -1258,7 +1275,7 @@ Each Certificate contains a Certificate expiration date. The reason for having a
 
 The RA that processed the Subscriber’s Certificate Application shall make a commercially reasonable effort to notify Subscribers of the pending expiration of their Certificate by sending an email to the technical contact listed in the corresponding Certificate Application. Upon expiration of a Certificate, the Subscriber shall immediately cease using such Certificate and shall remove such Certificate from any devices and/or software in which it has been installed.
 
-OV TLS, EV TLS, and Client Authentication Certificates
+**TLS, and Client Authentication Certificates**
 
 The Subscriber may request a replacement Certificate using an existing Key Pair.
 
@@ -1328,9 +1345,9 @@ Signing Services are supported by Certificates issued in accordance with this CP
 
 The CA will follow a documented procedure for verifying all data requested for inclusion in the Certificate. In cases where the Certificate request does not contain all the necessary information about the Applicant, the CA will obtain the remaining information from a reliable, independent, third-party data source.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
-The Applicant information will include at least one FQDN or IP address. For EV TLS Certificates, the Applicant will include at least one FQDN.
+For DV and OV TLS Certificates, the Applicant information will include at least one FQDN or IP address. For EV TLS Certificates, the Applicant will include at least one FQDN.
 
 #### 4.2.1.1 Applicant Communication
 
@@ -1358,7 +1375,7 @@ Communication:
 
 The CAs and RAs may use the documents and data provided in §3.2 to verify Certificate information, or may reuse previous validations themselves provided the data or documentation was obtained from a source specified under §3.2 or completed the validation itself no more than 825 days after such data or documentation was validated.
 
-**OV TLS, EV TLS, Client Authentication and S/MIME Certificates**
+**TLS, Client Authentication and S/MIME Certificates**
 
 For validation of Domain Names, email domains, and IP Addresses according to §3.2.2.4 and §3.2.2.5, any reused data, document, or completed validation can be obtained no more than 398 days prior to issuing the Certificate.
 
@@ -1384,7 +1401,7 @@ Reuse of previous validation data or documentation obtained for face-to-face mee
 
 #### 4.2.1.3 High Risk Certificate Requests
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
 The CAs maintain procedures to identify high risk Certificate requests that require additional verification activity prior to Certificate issuance. High risk certificate procedures include processes to verify high risk Domain Names and/or evaluate deceptive Domain Names.
 
@@ -1412,9 +1429,9 @@ Subscriber’s Private Key is generated, stored, and used in a suitable cryptogr
 
 The CA or RA rejects any Certificate application that cannot be verified. The CA may also reject a Certificate application if the CA believes that issuing the Certificate could damage or diminish the CA’s reputation or business including the Entrust business.
 
-**OV TLS, EV TLS, Client Authentication Certificates**
+**TLS and Client Authentication Certificates**
 
-The CAs do not issue OV TLS, EV TLS, or Client Authentication Certificates containing Internal Names or Reserved IP Addresses.
+The CAs do not issue TLS or Client Authentication Certificates containing Internal Names or Reserved IP Addresses.
 
 **EV TLS, EV Code Signing and Verified Mark Certificates**
 
@@ -1449,9 +1466,9 @@ The CA documents potential issuances that were prevented by a CAA record in suff
 
 Entrust CAA identifying domain is ‘**entrust.net**’.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
-The CA performs CAA record checking on `issue`, `issuewild`, and `iodef` property tags prior to issuing OV and EV TLS Certificates.
+The CA performs CAA record checking on `issue`, `issuewild`, and `iodef` property tags prior to issuing TLS Certificates.
 
 **S/MIME Certificates**
 
@@ -1479,7 +1496,7 @@ Roots CA Private Keys will not sign Subscriber Certificates.
 
 The CA will not issue Certificates with validity period that exceeds the validity period of the corresponding Root CA Certificate. The CA will not backdate the notBefore date of a Subscriber Certificate.
 
-The CA enforces multi-factor authentication for all accounts capable of causing certificate issuance or performing Registration Authority. In addition, the CA implements technical controls operated to restrict issuance of OV TLS, EV TLS and S/MIME Certificates through accounts which are limited to a set of pre-approved domains or email addresses.
+The CA enforces multi-factor authentication for all accounts capable of causing certificate issuance or performing Registration Authority. In addition, the CA implements technical controls operated to restrict issuance of TLS and S/MIME Certificates through accounts which are limited to a set of pre-approved domains or email addresses.
 
 **Mark Certificates**
 
@@ -1487,9 +1504,9 @@ Before issuance of a Mark Certificate, the CA will log the Mark Certificate pre-
 
 #### 4.3.1.3	Linting of To-be-signed Certificate Content
 
-**OV TLS, EV TLS and S/MIME Certificates**
+**TLS and S/MIME Certificates**
 
-The CA will perform Linting on to-be-signed contents before an OV TLS, EV TLS or S/MIME Certificate is signed with the Private Key. Certificates will not be signed with the Private Key, if the to-be-signed contents fails the Linting process.
+The CA will perform Linting on to-be-signed contents before a TLS or S/MIME Certificate is signed with the Private Key. Certificates will not be signed with the Private Key, if the to-be-signed contents fails the Linting process.
 
 #### 4.3.1.4	Linting of Issued Certificates
 
@@ -1515,9 +1532,9 @@ No stipulation.
 
 Subordinate CA Certificates are disclosed in the CCADB within one week of Certificate issuance.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
-OV and EV TLS Certificates may include two or more signed certificate timestamps (SCT) from ASV approved independent Certificate Transparency logs.
+TLS Certificates may include two or more signed certificate timestamps (SCT) from ASV approved independent Certificate Transparency logs.
 
 **Verified Mark Certificates**
 
@@ -1824,7 +1841,7 @@ Not applicable.
 
 ### 4.10.1 Operational characteristics
 
-**OV TLS, EV TLS, Client Authentication and S/MIME Certificates**
+**TLS, Client Authentication and S/MIME Certificates**
 
 Revocation entries on a CRL or OCSP response are not removed until after the expiry date of the revoked Certificate.
 
@@ -2194,7 +2211,7 @@ The CA will reject a Certificate request if one or more of the following conditi
     2. In the case of ROCA vulnerability, the CA will reject keys identified by the tools available at https://github.com/crocs-muni/roca or equivalent.
     3. In the case of Close Primes vulnerability (https://fermatattack.secvuln.info/), the CA will reject weak keys which can be factored within 100 rounds using Fermat’s factorization method.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
 The CA will not generate a Key Pair on behalf of a Subscriber, and will not accept a Certificate request using a Key Pair previously generated by the CA.
 
@@ -2244,7 +2261,7 @@ As of July 1, 2017, the minimum key size for a Root CA supporting the Adobe Appr
 
 The minimum key size for new CA Certificates which issue Code Signing and Time-stamping Certificates is 3072-bit RSA and ECC NIST P-384.
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
 The RSA key size is 2048, 3072 or 4096-bits. The ECC key size is NIST P-256 or P-384.
 
@@ -2461,9 +2478,9 @@ CA 2048-bit RSA Key Pairs may have a validity period expiring no later than 31 D
 
 Root CA Certificates may have a validity period of up to, but no more than 9132-days (~25-years).
 
-**OV and EV TLS Certificates**
+**TLS Certificates**
 
-OV and EV TLS Certificates may have a validity period of up to, but no more than, 398-days.
+TLS Certificates may have a validity period of up to, but no more than, 398-days.
 
 **Client Authentication Certificates**
 
@@ -2584,9 +2601,9 @@ The extension requirements for extended key usage are:
 3. Must not include either `id-kp-serverAuth`, `id-kp-emailProtection`, `id-kp-codeSigning` or `id-kp-timeStamping` EKUs in the same Certificate, and
 4. Must not include additional key usage purposes unless the CA is aware of a reason for including the key usage purpose in the Certificate.
 
-**OV TLS, EV TLS, Code Signing, EV Code Signing and S/MIME Certificates**
+**TLS, Code Signing, EV Code Signing and S/MIME Certificates**
 
-Cross-certificates issued to support OV TLS, EV TLS, Code Signing, EV Code Signing or S/MIME Certificates will only be issued to a CA which meets the Baseline Requirements, S/MIME Baseline Requirements, or Code Signing Baseline Requirements, as applicable. The Cross-certificate subject name will be byte-for-byte identical to the encoded subject name of the existing CA Certificate.
+Cross-certificates issued to support TLS, Code Signing, EV Code Signing or S/MIME Certificates will only be issued to a CA which meets the Baseline Requirements, S/MIME Baseline Requirements, or Code Signing Baseline Requirements, as applicable. The Cross-certificate subject name will be byte-for-byte identical to the encoded subject name of the existing CA Certificate.
 
 #### 7.1.2.3 Subscriber Certificate
 
@@ -2650,15 +2667,13 @@ Name forms for Subscriber Certificates are as stipulated in §3.1.1. All other o
 
 Entries in the `dNSName` are in the "preferred name syntax" as specified in IETF RFC 5280 and thus do not contain underscore characters.
 
-**OV TLS, EV TLS, Client Authentication and Verified Mark Certificates**
-
 CAs do not issue a Certificate with a Domain Name containing a Reserved IP Address or Internal Name.
 
 #### 7.1.4.3 Subscriber Certificate Common Name Attribute
 
 Common Name will contain only one entry.
 
-**OV TLS, EV TLS and Client Authentication Certificates**
+**TLS and Client Authentication Certificates**
 
 Common Name value will also be contained in the `subjectAltName`.
 
@@ -2700,6 +2715,7 @@ Subscriber Certificates may (or must, if required by an applicable third party r
 
 **CA/Browser Forum Requirements:**
 
+- DV TLS Certificates **2.23.140.1.2.1**
 - OV TLS Certificates **2.23.140.1.2.2**
 - EV TLS Certificates **2.23.140.1.1**
 - Code Signing Certificates **2.23.140.1.4.1**
@@ -3032,7 +3048,7 @@ Entrust may use one or more representatives or agents to perform its obligations
 
 As a condition of having any Certificate issued to or for Subscriber, each Subscriber (in this section, "Subscriber" includes "Applicant" when referring to any time prior to issuance of the Certificate) makes, on its own behalf and if applicable on behalf of its principal or agent under a subcontractor or hosting service relationship, the representations, commitments, affirmations and warranties set out in each applicable Subscriber Agreement for the benefit of Certificate Beneficiaries, Entrust and any of Entrust’s Affiliates that will issue Certificates to or for Subscriber. Without limiting the generality of the foregoing:
 
-9.6.3.1	For OV TLS Certificates and EV TLS Certificates, Subscriber makes the representations and warranties set out in the TLS Certificate Subscriber Agreement posted in the Repository, which shall be in accordance with the requirements in s.9.6.3 of the Baseline Requirements.
+9.6.3.1	For TLS Certificates, Subscriber makes the representations and warranties set out in the TLS Certificate Subscriber Agreement posted in the Repository, which shall be in accordance with the requirements in s.9.6.3 of the Baseline Requirements.
 
 9.6.3.2	For Code Signing Certificates and EV Code Signing Certificates, Subscriber makes the representations and warranties set out in the Digital Certificates for Code Signing Subscriber Agreement posted in the Repository, which shall be in accordance with the requirements in s.9.6.3 of the Code Signing Baseline Requirements.
 
@@ -3055,7 +3071,7 @@ Each Relying Party makes the following representations, commitments, affirmation
 7. The Relying Party shall make its own judgment and rely on a Certificate only if such reliance is reasonable in the circumstances, including determining whether such reliance is reasonable given the nature of the security and trust provided by a Certificate and the value of any transaction that may involve the use of a Certificate.
 8. The Relying Party shall exercise its own judgment in determining whether it is reasonable under the circumstances to rely on a Certificate, including determining whether such reliance is reasonable given the nature of the security and trust provided by an Certificate and the value of any transaction that may involve the use of a Certificate.
 9. The Relying Party shall not use a Certificate for any hazardous or unlawful (including tortious) activities.
-10. With respect to OV and EV TLS Certificates, the Relying Party shall trust and make use of a Certificate only if the Certificate has not expired or been revoked and if a proper chain of trust can be established to a trustworthy Root CA, and the Relying Party shall not rely on a revoked or expired Certificate.
+10. With respect to TLS Certificates, the Relying Party shall trust and make use of a Certificate only if the Certificate has not expired or been revoked and if a proper chain of trust can be established to a trustworthy Root CA, and the Relying Party shall not rely on a revoked or expired Certificate.
 11. With respect to Code Signing, EV Code Signing, S/MIME and Document Signing Certificates, the Relying Party shall trust and make use of a digital signature created using the Private Key corresponding to the Public Key listed in the Certificate only if the Certificate was not expired or revoked at the time the digital signature was created and if a proper chain of trust can be established to a trustworthy Root CA.
 12. With respect to Code Signing, EV Code Signing, S/MIME, Document Signing and Time-Stamp Certificates, the Relying Party shall not rely on a digital signature created using the Private Key corresponding to the Public Key listed in the Certificate if the Certificate was expired at the time the digital signature was created or if the Certificate is revoked.
 
@@ -3233,6 +3249,21 @@ All references in this CPS to "section" or "§" refer to the sections of this CP
 | Extension: extKeyUsage            | Not critical           | Must be present per §7.1.5 |
 | Extension: nameConstraint         | Critical               | Must contain constraints per §7.1.5 |
 | Extension: authorityInfoAccess    | Not critical           | Must contain one AccessDescription with an accessMethod of ocsp and a Location of type uniformResourceIdentifier |
+| Extension: cRLDistributionPoints  | Not critical           | Must have at least one DistributionPoint containing a fullName of type uniformResourceIdentifier |
+
+## DV TLS Certificate
+
+| **Field**                         | **Critical Extension** | **Content** |
+| --- | -- | ------ |
+| Subject                           |                        | May commonName |
+| Extension: subjectKeyIdentifier   | Not critical           | 160-bit SHA-1 hash of subjectPublicKey per RFC 5280 |
+| Extension: authorityKeyIdentifier | Not critical           | Matches subjectKeyIdentifier of signing certificate |
+| Extension: certificatePolicies    | Not critical           | Must contain at least one set of policyInformation containing reserved certificate policy identifier |
+| Extension: basicConstraints       | Critical               | Empty or not present |
+| Extension: subjectAltName         | Not critical           | Must contain the commonName and all names must be type dNSName |
+| Extension: keyUsage               | Critical               | digitalSignature bit must be set, keyEncipherment may be set, other bits should not be set |
+| Extension: extKeyUsage            | Not critical           | Must include serverAuth, may includeclientAuth, other values must not be set |
+| Extension: authorityInfoAccess    | Not critical           | Must contain one AccessDescription with an accessMethod of caIssuers and a Location of type uniformResourceIdentifier and one AccessDescription with an accessMethod of ocsp and a Location of type uniformResourceIdentifier |
 | Extension: cRLDistributionPoints  | Not critical           | Must have at least one DistributionPoint containing a fullName of type uniformResourceIdentifier |
 
 ## OV TLS Certificate
