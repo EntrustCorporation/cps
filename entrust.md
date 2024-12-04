@@ -109,180 +109,39 @@ This document is called the Entrust Certificate Services Certification Practice 
 
 In the Entrust public-key infrastructure, CAs may accept Certificate Signing Requests (CSRs) and Public Keys from Applicants whose identity has been verified as provided herein by an RA. If a Certificate Application is verified, the verifying RA will send a request to a CA for the issuance of a Certificate. The CA will create a Certificate containing the Public Key and identification information contained in the request sent by the RA to that CA. The Certificate created in response to the request will be digitally signed by the CA.
 
-This CPS covers all Certificates issued and signed by the following CAs. The Root CA Certificates, Subordinate CA Certificates, and associated CRLs are disclosed through the CCADB.
+This CPS covers the following Root CAs and the associated PKI hierachies. The Root CA Certificates, Subordinate CA Certificates, and associated CRLs are disclosed through the CCADB.
 
-**Root - Entrust.net 2048**
+**Entrust.net Certification Authority (2048)**, 
+<https://web.entrust.com/root-certificates/entrust_2048_ca.cer>, with SHA256 fingerprint 6DC47172E01CBCB0BF62580D895FE2B8AC9AD4F873801E0C10B9C837D21EB177	
 
-- CN: Entrust.net Certification Authority (2048)
-  - Subject Key Identifier: 55E4 81D1 1180 BED8 89B9 08A3 31F9 A124 0916 B970
-  - Thumbprint (SHA-1): 5030 0609 1D97 D4F5 AE39 F7CB E792 7D7D 652D 3431
+**Entrust Root Certification Authority**, <https://web.entrust.com/root-certificates/entrust_ev_ca.cer>, with SHA256 fingerprint 73C176434F1BC6D5ADF45B0E76E727287C8DE57616C1E6E6141A2B2CBC7D8E4C	
 
-**Subordinate CA(s)**
+**Entrust Root Certification Authority – G2**, <https://web.entrust.com/root-certificates/entrust_g2_ca.cer>, with SHA256 fingerprint 43DF5774B03E7FEF5FE40D931A7BEDF1BB2E6B42738C4E6D3841103D3AA7F339
 
-- CN: Entrust Class 2 Client CA
-  - Subject Key Identifier: 09 91 a5 ba e9 f2 2e 2a 75 df cd 7e fe 77 ca f2 de 6b 9b 24
-- CN: Entrust Class 2 Client CA - C2CA2
-  - Subject Key Identifier: a2 71 4a d5 c2 64 65 2f 8d ce 2a e2 c1 b6 e7 0d d0 f9 32 e4
-- CN: Entrust Class 3 Client CA - SHA256
-  - Subject Key Identifier: 06 9f 6f 4e a2 29 4e 0f 0c ae 17 bf b6 98 46 ef ad b8 3b 72
-- CN: Entrust Timestamping CA - TS1
-  - Subject Key Identifier: c3 c2 71 d2 7b d7 68 05 ae 3b 39 9b 34 25 0c 62 03 c7 57 68
-- CN: Entrust Enterprise Intermediate CA - ICA1
-  - Subject Key Identifier: c8 38 d4 0a 70 dd a3 57 a8 e5 96 59 2d 13 13 c9 20 d5 dc b3
+**Entrust Root Certification Authority - EC1**, <https://web.entrust.com/root-certificates/entrust_ec1_ca.cer>, with SHA256 fingerprint 02ED0EB28C14DA45165C566791700D6451D7FB56F0B2AB1D3B8EB070E56EDFF5
 
-**Root - Entrust Root Certification Authority**
+**Entrust Root Certification Authority – G4**, <https://web.entrust.com/root-certificates/entrust_g4_ca.cer>, with SHA256 fingerprint DB3517D1F6732A2D5AB97C533EC70779EE3270A62FB4AC4238372460E6F01E88
 
-- CN: Entrust Root Certification Authority
-  - Subject Key Identifier: 68 90 e4 67 a4 a6 53 80 c7 86 66 a4 f1 f7 4b 43 fb 84 bd 6d
-  - Thumbprint (SHA-1): b3 1e b1 b7 40 e3 6c 84 02 da dc 37 d4 4d f5 d4 67 49 52 f9
+**Entrust 4K TLS Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_4ktlsr2022.crt>, with SHA256 fingerprint DD6C44B39401B053DBE61120748BBB0F6056007665C168E5C286750EDC8DF129
 
-**Subordinate CA(s)**
+**Entrust 4K EV TLS Root CA – 2022**, <http://web.entrust.com/root-certificates/prod_ca_4kevtlsr2022.crt>, with SHA256 fingerprint 647987D98D52645DA4D3DE3B80771A0CE02B9B9285E6E86999882170744EC9AA
 
-- CN: Entrust Certification Authority - L1E
-  - Subject Key Identifier: 5b 41 8a b2 c4 43 c1 bd bf c8 54 41 55 9d e0 96 ad ff b9 a1
+**Entrust P384 TLS Root CA - 2022**, <http://web.entrust.com/root-certificates/prod_ca_p384tlsr2022.crt>, with SHA256 fingerprint 420332EF876EBE78F2AF5D28AAACDE24AAD0C10F8FFAAC469EFD7BD941929568
 
-**Root G2**
+**Entrust P384 EV TLS Root CA – 2022**, <http://web.entrust.com/root-certificates/prod_ca_p384evtlsr2022.crt>, with SHA256 fingerprint 937EF8F12276B3C7A3F58E345D09A6EFF01F862F8D2794441CD84D511825FA0C
 
-- CN: Entrust Root Certification Authority - G2
-  - Key Identifier: 6a 72 26 7a d0 1e ef 7d e7 3b 69 51 d4 6c 8d 9f 90 12 66 ab
-  - Thumbprint (SHA-1): 8c f4 27 fd 79 0c 3a d1 66 06 8d e8 1e 57 ef bb 93 22 72 d4
+**Entrust 4K Client Root CA - 2024**, <https://files.entrust.com/root-certificates/root_4kclientr2024.crt>, with SHA256 fingerprint 621A840CDEECFDDB20B2528E5E8AE5CBA6D2FDC23020BC7BA04FA90F54833D74
 
-**Subordinate CA(s)**
+**Entrust P384 Client Root CA - 2024**, <https://files.entrust.com/root-certificates/root_p384clientr2024.crt>, with SHA256 fingerprint 481F0E1B0874D84B189FF83A694D27B30ECD2A477AB3289E976C7FA1A6BD255B
 
-- CN: Entrust Class 1 Client CA - SHA256
-  - Subject Key Identifier: e2 49 b9 ec 25 de b7 0c de e5 50 18 5b 48 cc 0c 8e 15 f2 a6
-- CN: Entrust Certification Authority - L1K
-  - Subject Key Identifier: 82 a2 70 74 dd bc 53 3f cf 7b d4 f7 cd 7f a7 60 c6 0a 4c bf
-- CN: Entrust Certification Authority - L1M
-  - Subject Key Identifier: c3 f7 d0 b5 2a 30 ad af 0d 91 21 70 39 54 dd bc 89 70 c7 3a
-- CN: Entrust Extended Validation Code Signing CA - EVCS1
-  - Subject Key Identifier: 2a 0a 6f 32 2c 29 20 21 76 6a b1 ac 8c 3c af 93 8e 0e 6b a2
-- CN: Entrust Code Signing CA - OVCS1
-  - Subject Key Identifier: 7e 1a 1f 1a 11 74 5c 64 c9 0c 1f 94 01 ab fd 81 64 2e a1 2c
-- CN: CrowdStrike TLS CA 2022
-  - Subject Key Identifier: 55 ea a7 45 b9 9a f7 b6 71 31 1a 31 df a1 76 fe 76 92 99 7a
-- CN: Namirial EV SSL CA 2023
-  - Subject Key Identifier: ea fe be 58 47 b8 33 d9 d2 36 7b c8 8c 67 7a b1 33 8b 8d 52
-- CN: Namirial OV SSL CA 2023
-  - Subject Key Identifier: 9a 9f 6f a5 f8 fe 34 fc 10 2d be 2f 89 c6 b9 d7 c6 92 d3 1e
-- CN: Siemens Issuing CA Internet Server 2020
-  - Subject Key Identifier: c9 a7 57 cb 86 c9 61 07 c6 c2 b4 86 65 a9 1e c1 ca e1 02 9b
+**Entrust SMIME Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_smimer2022.crt>, with SHA256 fingerprint B7A41ED8096D62716BADC7F530942197A9E7E3175CE05D11D01E7AD6C12DCBA7
 
-**Root EC1**
+**Entrust Root Certification Authority – CSBR1**, <https://web.entrust.com/root-certificates/CSBR1.cer>, with SHA256 fingerprint B80847FDA453BF6ED876CA7BC046A2481909E15B6ED376E665E7AD09F3864E71
 
-- CN: Entrust Root Certification Authority - EC1
-  - Subject Key Identifier: b7 63 e7 1a dd 8d e9 08 a6 55 83 a4 e0 6a 50 41 65 11 42 49
-  - Thumbprint (SHA-1): 20 d8 06 40 df 9b 25 f5 12 25 3a 11 ea f7 59 8a eb 14 b5 47
+**Entrust Digital Signing Root Certification Authority – DSR1**, <https://web.entrust.com/root-certificates/DSR1.cer>, with SHA256 fingerprint E874FE2531EAE4A4B6B62F37496BBAE90EB1D8FC8CEDBEBB00A182CFACDC7E61
 
-**Subordinate CA(s)**
+**Entrust Verified Mark Root Certification Authority – VMCR1**, <https://web.entrust.com/root-certificates/VMRC1.cer>, with SHA256 fingerprint 7831D95A47D42508CD5C9E6264F9096BAC19F04EB9B7C8BDD35FFFC71C189617
 
-- CN: Entrust Certification Authority - L1F
-  - Subject Key Identifier: 2e 62 f0 14 ee 87 cd b3 35 03 3d ef e4 b9 9e fd 3b b8 a3 c9
-- CN: Entrust Certification Authority - L1J
-  - Subject Key Identifier: c3 f9 45 03 be c8 f9 0b 3c 45 35 f3 eb 72 ec e7 e8 eb 94 9b
-
-**Root G4**
-
-- CN: Entrust Root Certification Authority - G4
-  - Key Identifier: 9f 38 c4 56 23 c3 39 e8 a0 71 6c e8 54 4c e4 e8 3a b1 bf 67
-  - SHA-1 Thumbprint: 14 88 4e 86 26 37 b0 26 af 59 62 5c 40 77 ec 35 29 ba 96 01
-
-**Subordinate CA(s)**
-
-- CN: Entrust Certification Authority - L1N
-  - Subject Key Identifier: ee 47 d1 85 71 f1 fd 2d b7 3f bb 3e 63 58 77 17 49 40 0e 95
-
-**Root 4K TLS 2022**
-
-- CN: Entrust 4K TLS Root CA - 2022
-  - Key Identifier: 9440ea5affef4963019e09dfe03b803373122056
-  - Thumbprint (SHA-1): 193c2a76f8cadd84f35bf52ee7aa506657917a38
-
-**Subordinate CA(s)**
-
-- CN: Entrust 4K TLS Certification Authority - OVTLS1
-  - Subject Key Identifier: a80003c10185b8c0272aa9bc08acfad44abe51a5
-
-**Root 4K EV TLS 2022**
-
-- CN: Entrust 4K EV TLS Root CA - 2022
-  - Key Identifier: 0bdd90d58fbb3f5cbd60a0551a2482863c413041
-  - Thumbprint (SHA-1): eadb0ab9dc7938021435fed13e488406a1aa292a
-
-**Subordinate CA(s)**
-
-- CN: Entrust 4K TLS Certification Authority - EVTLS1
-  - Subject Key Identifier: 9930115c04d2448b259713c665d21616c9678792
-
-**Root P384 TLS 2022**
-
-- CN: Entrust P384 TLS Root CA - 2022
-  - Key Identifier: c42e807c5f709204864c9e52cb2b67c5076a8293
-  - Thumbprint (SHA-1): 424aae6d0c8c7624817cdb9ccb510ded6232191d
-
-**Subordinate CA(s)**
-
-- CN: Entrust P384 TLS Certification Authority - OVTLS2
-  - Subject Key Identifier: c25b7126ed58efa51419aa2ef60456546f9a39c9
-
-**Root P384 EV TLS 2022**
-
-- CN: Entrust P384 EV TLS Root CA - 2022
-  - Key Identifier: 137210ae82580fc1389bbcb6a64c05ca8e8468bf
-  - Thumbprint (SHA-1): 1e6c44dc6473d4819be89fb237af4883fc376987
-
-**Subordinate CA(s)**
-
-- CN: Entrust P384 TLS Certification Authority - EVTLS2
-  - Subject Key Identifier: 2cc1fad3279c77e73038c8c95ca43c02a36775c4
-
-**Root**
-
-- CN: Entrust SMIME Root CA - 2022
-  - Key Identifier: 94c8e8468d7f53170305441810ac65e06ea2950d
-  - Thumbprint (SHA-1): b8b1c5aac29bedf0ad71b2f14bfeaa38f817535e
-
-**Subordinate CA(s)**
-
-- CN: Entrust Personal Email Certification Authority - SMIME1
-  - Subject Key Identifier: 03219b5f18632ec87ef9aedad9179fb6c91b8360
-
-**Root CSBR1**
-
-- CN: Entrust Root Certification Authority - CSBR1
-  - Key Identifier: 82 ba d6 3d 97 ce 9f cf 71 e8 92 37 af fd b3 b5 69 35 57 cf
-  - SHA-1 Thumbprint: 89 74 24 05 3a 4a 88 7a c0 98 38 02 91 03 4d 88 5c 87 14 b9
-
-**Subordinate CA(s)**
-
-- CN: Entrust Extended Validation Code Signing CA - EVCS2
-  - Subject Key Identifier: ce 89 4f 82 51 aa 15 a2 84 62 ca 31 23 61 d2 61 fb f8 fe 78
-- CN: Entrust Code Signing CA - OVCS2
-  - Subject Key Identifier: ef 9f ba 79 b0 73 f2 25 1e 78 9c 03 52 9c 1b 53 84 de 8d ed
-- CN: Entrust Timestamping CA - TS2
-  - Subject Key Identifier: 26 0f f0 c4 48 08 1b cd dd 91 f5 54 54 b6 b3 b3 fc 99 f1 08
-
-**Root DSR1**
-
-- CN: Entrust Digital Signing Root Certification Authority - DSR1
-  - Key Identifier: a6 65 41 81 f2 5b 87 05 6a dd fd 8a 54 4e 8f 98 7b dc 23 b8
-  - Thumbprint (SHA-1): 10 4f e7 37 00 18 6e 69 2e 78 a0 15 6a 3f 9e d8 07 b0 60 8e
-
-**Subordinate CA(s)**
-
-- CN: Entrust Digital Signing Certification Authority - DS1
-  - Subject Key Identifier: 80a1841c29b421823c0e5d17fbb21ed1a3e2d82d
-
-**Root VMCR1**
-
-- CN: Entrust Verified Mark Root Certification Authority - VMCR1
-  - Key Identifier: 73 23 56 7b 2b 78 45 80 9a b8 c2 7c cc a5 86 39 8b 26 78 c5
-  - SHA-1 Thumbprint: 4a 04 d5 a6 28 0e 98 e6 5c d4 7f 87 e8 ec a6 4c 8b 4a 9a 43
-
-**Subordinate CA(s)**
-
-- CN: Entrust Verified Mark CA - VMC2
-  - Subject Key Identifier: ef bc 3c b4 af 3a d0 45 5e 76 54 df c7 64 78 e9 2d 1d 74 3f
 
 **Externally Issued Cross Certificates**
 
