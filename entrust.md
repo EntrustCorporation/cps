@@ -142,16 +142,16 @@ SHA256 fingerprint: B80847FDA453BF6ED876CA7BC046A2481909E15B6ED376E665E7AD09F386
 SHA256 fingerprint: E874FE2531EAE4A4B6B62F37496BBAE90EB1D8FC8CEDBEBB00A182CFACDC7E61
 - [**Entrust Verified Mark Root Certification Authority – VMCR1**](https://web.entrust.com/root-certificates/VMRC1.cer)  
 SHA256 fingerprint: 7831D95A47D42508CD5C9E6264F9096BAC19F04EB9B7C8BDD35FFFC71C189617
-
-**AffirmTrust Networking**, <https://www.affirmtrust.com/downloads/affirmtrust_networking.crt>, with SHA256 fingerprint 0A81EC5A929777F145904AF38D5D509F66B5E2C58FCDB531058B0E17F3F0B41B
-
-**AffirmTrust Commercial**, <https://www.affirmtrust.com/downloads/affirmtrust_commercial.crt>, with SHA256 fingerprint 0376AB1D54C5F9803CE4B2E201A0EE7EEF7B57B636E8A93C9B8D4860C96F5FA7
-
-**AffirmTrust Premium**, <https://www.affirmtrust.com/downloads/affirmtrust_premium.crt>, with SHA256 fingerprint 70A73F7F376B60074248904534B11482D5BF0E698ECC498DF52577EBF2E93B9A
-
-**AffirmTrust Premium ECC**, <https://www.affirmtrust.com/downloads/affirmtrust_premium_ecc.crt>, with SHA256 fingerprint BD71FDF6DA97E4CF62D1647ADD2581B07D79ADF8397EB4ECBA9C5E8488821423
-
-**AffirmTrust 4K TLS Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_aft4ktlsr2022.crt>, with SHA256 fingerprint A7DEDF5A842167DD12FDAA0F2080E73295B8B8BEA71B2094EA0950945A482FC1
+- [**AffirmTrust Networking**](https://www.affirmtrust.com/downloads/affirmtrust_networking.crt)  
+SHA256 fingerprint: 0A81EC5A929777F145904AF38D5D509F66B5E2C58FCDB531058B0E17F3F0B41B
+- [**AffirmTrust Commercial**](https://www.affirmtrust.com/downloads/affirmtrust_commercial.crt)  
+SHA256 fingerprint: 0376AB1D54C5F9803CE4B2E201A0EE7EEF7B57B636E8A93C9B8D4860C96F5FA7
+- [**AffirmTrust Premium**](https://www.affirmtrust.com/downloads/affirmtrust_premium.crt)  
+SHA256 fingerprint: 70A73F7F376B60074248904534B11482D5BF0E698ECC498DF52577EBF2E93B9A
+- [**AffirmTrust Premium ECC**](https://www.affirmtrust.com/downloads/affirmtrust_premium_ecc.crt>)  
+SHA256 fingerprint: BD71FDF6DA97E4CF62D1647ADD2581B07D79ADF8397EB4ECBA9C5E8488821423
+- [**AffirmTrust 4K TLS Root CA – 2022**](https://web.entrust.com/root-certificates/prod_ca_aft4ktlsr2022.crt)  
+SHA256 fingerprint: A7DEDF5A842167DD12FDAA0F2080E73295B8B8BEA71B2094EA0950945A482FC1
 
 **Externally Issued Cross Certificates**
 
