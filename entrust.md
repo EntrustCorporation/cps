@@ -111,37 +111,36 @@ In the Entrust public-key infrastructure, CAs may accept Certificate Signing Req
 
 This CPS covers the following Root CAs and the associated PKI hierachies. The Root CA Certificates, Subordinate CA Certificates, and associated CRLs are disclosed through the CCADB.
 
-**Entrust.net Certification Authority (2048)**, 
-<https://web.entrust.com/root-certificates/entrust_2048_ca.cer>, with SHA256 fingerprint 6DC47172E01CBCB0BF62580D895FE2B8AC9AD4F873801E0C10B9C837D21EB177	
-
-**Entrust Root Certification Authority**, <https://web.entrust.com/root-certificates/entrust_ev_ca.cer>, with SHA256 fingerprint 73C176434F1BC6D5ADF45B0E76E727287C8DE57616C1E6E6141A2B2CBC7D8E4C	
-
-**Entrust Root Certification Authority – G2**, <https://web.entrust.com/root-certificates/entrust_g2_ca.cer>, with SHA256 fingerprint 43DF5774B03E7FEF5FE40D931A7BEDF1BB2E6B42738C4E6D3841103D3AA7F339
-
-**Entrust Root Certification Authority - EC1**, <https://web.entrust.com/root-certificates/entrust_ec1_ca.cer>, with SHA256 fingerprint 02ED0EB28C14DA45165C566791700D6451D7FB56F0B2AB1D3B8EB070E56EDFF5
-
-**Entrust Root Certification Authority – G4**, <https://web.entrust.com/root-certificates/entrust_g4_ca.cer>, with SHA256 fingerprint DB3517D1F6732A2D5AB97C533EC70779EE3270A62FB4AC4238372460E6F01E88
-
-**Entrust 4K TLS Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_4ktlsr2022.crt>, with SHA256 fingerprint DD6C44B39401B053DBE61120748BBB0F6056007665C168E5C286750EDC8DF129
-
-**Entrust 4K EV TLS Root CA – 2022**, <http://web.entrust.com/root-certificates/prod_ca_4kevtlsr2022.crt>, with SHA256 fingerprint 647987D98D52645DA4D3DE3B80771A0CE02B9B9285E6E86999882170744EC9AA
-
-**Entrust P384 TLS Root CA - 2022**, <http://web.entrust.com/root-certificates/prod_ca_p384tlsr2022.crt>, with SHA256 fingerprint 420332EF876EBE78F2AF5D28AAACDE24AAD0C10F8FFAAC469EFD7BD941929568
-
-**Entrust P384 EV TLS Root CA – 2022**, <http://web.entrust.com/root-certificates/prod_ca_p384evtlsr2022.crt>, with SHA256 fingerprint 937EF8F12276B3C7A3F58E345D09A6EFF01F862F8D2794441CD84D511825FA0C
-
-**Entrust 4K Client Root CA - 2024**, <https://files.entrust.com/root-certificates/root_4kclientr2024.crt>, with SHA256 fingerprint 621A840CDEECFDDB20B2528E5E8AE5CBA6D2FDC23020BC7BA04FA90F54833D74
-
-**Entrust P384 Client Root CA - 2024**, <https://files.entrust.com/root-certificates/root_p384clientr2024.crt>, with SHA256 fingerprint 481F0E1B0874D84B189FF83A694D27B30ECD2A477AB3289E976C7FA1A6BD255B
-
-**Entrust SMIME Root CA – 2022**, <https://web.entrust.com/root-certificates/prod_ca_smimer2022.crt>, with SHA256 fingerprint B7A41ED8096D62716BADC7F530942197A9E7E3175CE05D11D01E7AD6C12DCBA7
-
-**Entrust Root Certification Authority – CSBR1**, <https://web.entrust.com/root-certificates/CSBR1.cer>, with SHA256 fingerprint B80847FDA453BF6ED876CA7BC046A2481909E15B6ED376E665E7AD09F3864E71
-
-**Entrust Digital Signing Root Certification Authority – DSR1**, <https://web.entrust.com/root-certificates/DSR1.cer>, with SHA256 fingerprint E874FE2531EAE4A4B6B62F37496BBAE90EB1D8FC8CEDBEBB00A182CFACDC7E61
-
-**Entrust Verified Mark Root Certification Authority – VMCR1**, <https://web.entrust.com/root-certificates/VMRC1.cer>, with SHA256 fingerprint 7831D95A47D42508CD5C9E6264F9096BAC19F04EB9B7C8BDD35FFFC71C189617
-
+- [**Entrust.net Certification Authority (2048)**](https://web.entrust.com/root-certificates/entrust_2048_ca.cer)  
+SHA256 fingerprint: 6DC47172E01CBCB0BF62580D895FE2B8AC9AD4F873801E0C10B9C837D21EB177	
+- [**Entrust Root Certification Authority**](https://web.entrust.com/root-certificates/entrust_ev_ca.cer)  
+SHA256 fingerprint: 73C176434F1BC6D5ADF45B0E76E727287C8DE57616C1E6E6141A2B2CBC7D8E4C	
+- [**Entrust Root Certification Authority – G2**](https://web.entrust.com/root-certificates/entrust_g2_ca.cer)  
+SHA256 fingerprint: 43DF5774B03E7FEF5FE40D931A7BEDF1BB2E6B42738C4E6D3841103D3AA7F339
+- [**Entrust Root Certification Authority - EC1**](https://web.entrust.com/root-certificates/entrust_ec1_ca.cer)  
+SHA256 fingerprint: 02ED0EB28C14DA45165C566791700D6451D7FB56F0B2AB1D3B8EB070E56EDFF5
+- [**Entrust Root Certification Authority – G4**](https://web.entrust.com/root-certificates/entrust_g4_ca.cer)  
+SHA256 fingerprint: DB3517D1F6732A2D5AB97C533EC70779EE3270A62FB4AC4238372460E6F01E88
+- [**Entrust 4K TLS Root CA – 2022**](https://web.entrust.com/root-certificates/prod_ca_4ktlsr2022.crt)  
+SHA256 fingerprint DD6C44B39401B053DBE61120748BBB0F6056007665C168E5C286750EDC8DF129
+- [**Entrust 4K EV TLS Root CA – 2022**](http://web.entrust.com/root-certificates/prod_ca_4kevtlsr2022.crt)  
+SHA256 fingerprint: 647987D98D52645DA4D3DE3B80771A0CE02B9B9285E6E86999882170744EC9AA
+- [**Entrust P384 TLS Root CA - 2022**](http://web.entrust.com/root-certificates/prod_ca_p384tlsr2022.crt)  
+SHA256 fingerprint: 420332EF876EBE78F2AF5D28AAACDE24AAD0C10F8FFAAC469EFD7BD941929568
+- [**Entrust P384 EV TLS Root CA – 2022**](http://web.entrust.com/root-certificates/prod_ca_p384evtlsr2022.crt)  
+SHA256 fingerprint: 937EF8F12276B3C7A3F58E345D09A6EFF01F862F8D2794441CD84D511825FA0C
+- [**Entrust 4K Client Root CA - 2024**](https://files.entrust.com/root-certificates/root_4kclientr2024.crt)  
+SHA256 fingerprint: 621A840CDEECFDDB20B2528E5E8AE5CBA6D2FDC23020BC7BA04FA90F54833D74
+- [**Entrust P384 Client Root CA - 2024**](https://files.entrust.com/root-certificates/root_p384clientr2024.crt)  
+SHA256 fingerprint: 481F0E1B0874D84B189FF83A694D27B30ECD2A477AB3289E976C7FA1A6BD255B
+- [**Entrust SMIME Root CA – 2022**](https://web.entrust.com/root-certificates/prod_ca_smimer2022.crt)  
+SHA256 fingerprint: B7A41ED8096D62716BADC7F530942197A9E7E3175CE05D11D01E7AD6C12DCBA7
+- [**Entrust Root Certification Authority – CSBR1**](https://web.entrust.com/root-certificates/CSBR1.cer)  
+SHA256 fingerprint: B80847FDA453BF6ED876CA7BC046A2481909E15B6ED376E665E7AD09F3864E71
+- [**Entrust Digital Signing Root Certification Authority – DSR1**](https://web.entrust.com/root-certificates/DSR1.cer)  
+SHA256 fingerprint: E874FE2531EAE4A4B6B62F37496BBAE90EB1D8FC8CEDBEBB00A182CFACDC7E61
+- [**Entrust Verified Mark Root Certification Authority – VMCR1**](https://web.entrust.com/root-certificates/VMRC1.cer)  
+SHA256 fingerprint: 7831D95A47D42508CD5C9E6264F9096BAC19F04EB9B7C8BDD35FFFC71C189617
 
 **Externally Issued Cross Certificates**
 
